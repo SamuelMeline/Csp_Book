@@ -12,7 +12,7 @@ class AppFixtures extends Fixture
     {
         for ($i = 1; $i < 31; $i++) {
             $item = new Item();
-            $item->setImage('https://static.wikia.nocookie.net/leagueoflegends/images/9/91/Lame_d%27Infini_Obj.png/revision/latest?cb=20210518192718&path-prefix=fr');
+            $item->setImage('item.png');
             $item->setName('Item ' . $i);
             $item->setPrice(mt_rand(1000, 4000));
 

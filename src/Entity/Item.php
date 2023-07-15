@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ItemRepository::class)]
+#[UniqueEntity('name')]
 class Item
 {
     #[ORM\Id]
@@ -15,7 +17,8 @@ class Item
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column]
+    #[Assert\NotNull()]
     private ?string $image = null;
 
     #[ORM\Column(length: 50)]
