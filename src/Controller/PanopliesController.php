@@ -11,6 +11,6 @@ class PanopliesController extends AbstractController
     #[Route('/panoplies', 'panoplies.index', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('panoplies.html.twig');
+        return $this->render('pages/panoplies.html.twig');
     }
 }

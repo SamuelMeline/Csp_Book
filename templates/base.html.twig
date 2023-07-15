@@ -15,8 +15,11 @@
     </head>
     <body>
         {% block header %}
-            {% include 'header.html.twig' %}
+            {% include './partials/header.html.twig' %}
         {% endblock %}
         {% block body %}{% endblock %}
+        {% block footer %}
+            {% include './partials/footer.html.twig' %}
+        {% endblock %}
     </body>
 </html>

@@ -1,24 +1,159 @@
+/* Navbar */
 nav {
-   background-color: #f2f2f2;
-   padding: 10px;
- }
- 
- nav ul {
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
- }
- 
- nav li {
-   display: inline;
-   margin-right: 10px;
- }
- 
- nav li a {
-   text-decoration: none;
-   color: #333;
- }
- 
- nav li a:hover {
-   color: #ff0000;
- }
+	background-color: #f2f2f2;
+	padding: 10px;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	display: inline;
+	margin-right: 10px;
+}
+
+nav li a {
+	text-decoration: none;
+	color: #333;
+}
+
+nav li a:hover {
+	color: #ff0000;
+}
+
+/* Table */
+.container {
+	margin: 20px auto;
+	max-width: 800px;
+}
+
+.table-my-items {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table-my-items th,
+.table-my-items td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.table-my-items th {
+	background-color: #f2f2f2;
+	font-weight: bold;
+}
+
+.table-my-items tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.img-my-items {
+	max-width: 40px;
+	height: auto;
+  border-radius: 8px;
+}
+
+.img-gold {
+  max-width: 15px;
+  height: auto;
+  border-radius: 12px;
+  vertical-align: middle;
+}
+
+.table-cell-content {
+  display: flex;
+  align-items: center;
+}
+
+.item-price {
+  margin-right: 10px;
+}
+
+/* Pagination */
+
+.navigation {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	display: inline-block;
+	padding: 5px 10px;
+	text-decoration: none;
+	background-color: #f2f2f2;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-right: 5px;
+}
+
+.pagination .active a {
+	background-color: #333;
+	color: #fff;
+}
+
+.pagination a:hover {
+	background-color: #eaeaea;
+}
+
+.pagination .disabled a {
+	pointer-events: none;
+	background-color: #ccc;
+	color: #888;
+}
+
+/* Count Items */
+.count {
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background-color: #f2f2f2;
+  padding: 20px 0;
+  text-align: justify;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-info p {
+  margin: 0;
+  color: #777;
+}
+
+/* Home Page */

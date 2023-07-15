@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<h1>Bienvenue sur notre application</h1>
+
+	<h2>Fonctionnement de l'application</h2>
+	<p>Notre plateforme vous permet de créer et partager des compositions d'items pour améliorer vos performances dans les jeux League of Legends et TeamFight Tactics. Lorsque vous jouez à ces jeux, la sélection des bons items pour votre personnage et votre équipe est crucial pour maximiser votre potentiel.</p>
+	<p>Notre application vous offre un outil puissant pour explorer les différentes combinaisons d'items disponibles et créer des compositions optimisées.</p>
+
+	<h2>Jeux pris en charge</h2>
+	<p>Notre application est conçue spécifiquement pour les jeux League of Legends et TeamFight Tactics. Ces jeux sont connus pour leur aspect stratégique et la nécessité de choisir les bons items pour chaque situation. Notre application vous aide à prendre des décisions éclairées pour améliorer vos performances dans ces jeux passionnants.</p>
+
+	<h2>Créez, partagez, améliorez</h2>
+	<p>Utilisez notre interface conviviale pour sélectionner votre personnage et votre équipe, puis explorez notre vaste base de données d'items. Faites glisser les items sur votre composition, expérimentez différentes stratégies et observez les effets sur les statistiques de votre personnage en temps réel.</p>
+	<p>Partagez vos compositions avec la communauté, découvrez les compositions créées par d'autres joueurs talentueux et bénéficiez des conseils et des idées pour améliorer vos stratégies. Ensemble, nous pouvons repousser les limites et atteindre de nouveaux sommets dans les jeux League of Legends et TeamFight Tactics.</p>
+
+	<h2>Rejoignez notre communauté</h2>
+	<p>Ne vous contentez pas de deviner les meilleurs items pour votre personnage. Utilisez notre application pour affiner vos compétences, gagner en compétitivité et devenir un joueur d'élite dans League of Legends et TeamFight Tactics.</p>
+	<p>Rejoignez dès maintenant notre communauté passionnée et transformez votre expérience de jeu !</p>
+
+	<h2>Vidéos explicatives</h2>
+	<div class="video-container">
+	<h3>Teamfights Tactics</h3>
+		<video width="560" height="315" controls>
+			<source src="{{ asset('videos/tft.mp4') }}" type="video/mp4">
+			Votre navigateur ne prend pas en charge la lecture de vidéos.
+		</video>
+	</div>
+	<div class="video-container">
+	<h3>League of Legends</h3>
+		<video width="560" height="315" controls>
+			<source src="{{ asset('videos/lol.mp4') }}" type="video/mp4">
+			Votre navigateur ne prend pas en charge la lecture de vidéos.
+		</video>
+	</div>
+
+{% endblock %}
