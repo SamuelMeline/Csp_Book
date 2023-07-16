@@ -29,6 +29,8 @@
 						<th>Nom</th>
 						<th>Prix</th>
 						<th>Date de création</th>
+						<th>Edition</th>
+						<th>Supression</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,6 +46,12 @@
 								</div>
 							</td>
 							<td>{{ item.createdAt|date('d/m/Y') }}</td>
+							<td>
+								<a href="{{ path('item.edit', { id : item.id }) }}" class="btn-modification">Modifier</a>
+							</td>
+							<td>
+								<a href="{{ path('item.delete', { id : item.id }) }}" class="btn-suppression" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>
+							</td>
 						</tr>
 					{% endfor %}
 				</tbody>

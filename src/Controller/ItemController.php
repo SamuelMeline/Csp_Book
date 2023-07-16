@@ -70,6 +70,15 @@ class ItemController extends AbstractController
         ]);
     }
 
+    /**
+     * Affiche le formulaire d'édition d'un item
+     *
+     * @param ItemRepository $repository
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param integer $id
+     * @return Response
+     */
     #[Route('/item/edition/{id}', name: 'item.edit', methods: ['GET', 'POST'])]
     public function edit(ItemRepository $repository, Request $request, EntityManagerInterface $manager, int $id) : Response
     {
@@ -95,5 +104,25 @@ class ItemController extends AbstractController
             'form' => $form->createView(),
             'item' => $item
         ]);
+    }
+
+    /**
+     * Supprime un item
+     *
+     * @param ItemRepository $repository
+     * @param EntityManagerInterface $manager
+     * @param integer $id
+     * @return Response
+     */
+    #[Route('/item/suppression/{id}', name: 'item.delete', methods: ['GET'])]
+    public function delete(ItemRepository $repository, EntityManagerInterface $manager, int $id) : Response
+    {
+        $item = $repository->findOneBy(['id' => $id]);
+        $manager->remove($item);
+        $manager->flush();
+
+        $this->addFlash('success', 'L\'item a bien été supprimé !');
+
+        return $this->redirectToRoute('item.index');
     }
 }
