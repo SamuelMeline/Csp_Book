@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Création d'un item</h1>
+    <h1>Modification de l'item</h1>
     <div class="container">
-
         {{ form_start(form) }}
 
         <div class="form-group">
-            {{ form_label(form.image) }}
+            {% if item.image is not empty %}
+                <img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="img-my-items">
+            {% endif %}
             {{ form_widget(form.image) }}
             <div class="form-error">
                 {{ form_errors(form.image) }}
@@ -33,6 +34,7 @@
         <div class="form-group">
             {{ form_row(form.submit) }}
         </div>
+
+        {{ form_end(form) }}
     </div>
-    {{ form_end(form) }}
 {% endblock %}

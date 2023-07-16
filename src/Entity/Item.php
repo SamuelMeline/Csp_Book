@@ -6,7 +6,6 @@ use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ItemRepository::class)]
 #[UniqueEntity('name')]
@@ -15,24 +14,24 @@ class Item
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    private ?int $id;
 
     #[ORM\Column]
     #[Assert\NotNull()]
-    private ?string $image = null;
+    private ?string $image;
 
     #[ORM\Column(length: 50)]
     #[Assert\Length(min: 2, max: 50)]
-    private ?string $name = null;
+    private ?string $name;
 
     #[ORM\Column]
     #[Assert\PositiveOrZero]
     #[Assert\NotNull()]
-    private ?float $price = null;
+    private ?float $price;
 
     #[ORM\Column]
     #[Assert\NotNull()]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?\DateTimeImmutable $createdAt;
 
     /**
      * Item constructor.

@@ -12,12 +12,26 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Validator\Constraints as Assert;
+
 class ItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, [
+                'required' => false, 
+                'mapped' => false, // Ne pas mapper le champ à l'entité Item
+                'constraints' => [
+                    new Assert\Image([
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif',
+                        ],
+                        'mimeTypesMessage' => 'Le format de l\'image n\'est pas valide. Les formats acceptés sont : JPG, PNG et GIF.',
+                    ]),
+                ],
+            ])
             ->add('name', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
@@ -45,12 +59,12 @@ class ItemType extends AbstractType
                     new Assert\PositiveOrZero(),
                 ]
             ])
-        ->add('submit', SubmitType::class, [
-            'attr' => [
-                'class' => 'btn btn-form'
-            ],
-            'label' => 'Créer mon item'
-        ]);
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-form'
+                ],
+                'label' => 'Créer mon item'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
