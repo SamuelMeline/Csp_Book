@@ -1,4 +1,4 @@
-const deleteButtons = document.querySelectorAll(".btn-suppression");
+const deleteButtons = document.querySelectorAll(".delete-button");
 
 deleteButtons.forEach((button) => {
 	button.addEventListener("click", function (event) {

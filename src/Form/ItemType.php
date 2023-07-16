@@ -17,12 +17,16 @@ class ItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $isEdit = $options['is_edit'];
+
         $builder
             ->add('image', FileType::class, [
-                'required' => false, 
-                'mapped' => false, // Ne pas mapper le champ à l'entité Item
+                'required' => false,
+                'mapped' => $isEdit,
                 'constraints' => [
                     new Assert\Image([
+                        'maxSize' => '5M',
+                        'maxSizeMessage' => 'La taille de l\'image ne doit pas dépasser 5 Mo.',
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
@@ -71,6 +75,7 @@ class ItemType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Item::class,
+            'is_edit' => true
         ]);
     }
 }

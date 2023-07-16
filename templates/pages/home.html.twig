@@ -4,37 +4,47 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Bienvenue sur notre application</h1>
-
-	<h2>Fonctionnement de l'application</h2>
-	<p>Notre plateforme vous permet de créer et partager des compositions d'items pour améliorer vos performances dans les jeux League of Legends et TeamFight Tactics. Lorsque vous jouez à ces jeux, la sélection des bons items pour votre personnage et votre équipe est crucial pour maximiser votre potentiel.</p>
-	<p>Notre application vous offre un outil puissant pour explorer les différentes combinaisons d'items disponibles et créer des compositions optimisées.</p>
-
-	<h2>Jeux pris en charge</h2>
-	<p>Notre application est conçue spécifiquement pour les jeux League of Legends et TeamFight Tactics. Ces jeux sont connus pour leur aspect stratégique et la nécessité de choisir les bons items pour chaque situation. Notre application vous aide à prendre des décisions éclairées pour améliorer vos performances dans ces jeux passionnants.</p>
-
-	<h2>Créez, partagez, améliorez</h2>
-	<p>Utilisez notre interface conviviale pour sélectionner votre personnage et votre équipe, puis explorez notre vaste base de données d'items. Faites glisser les items sur votre composition, expérimentez différentes stratégies et observez les effets sur les statistiques de votre personnage en temps réel.</p>
-	<p>Partagez vos compositions avec la communauté, découvrez les compositions créées par d'autres joueurs talentueux et bénéficiez des conseils et des idées pour améliorer vos stratégies. Ensemble, nous pouvons repousser les limites et atteindre de nouveaux sommets dans les jeux League of Legends et TeamFight Tactics.</p>
-
-	<h2>Rejoignez notre communauté</h2>
-	<p>Ne vous contentez pas de deviner les meilleurs items pour votre personnage. Utilisez notre application pour affiner vos compétences, gagner en compétitivité et devenir un joueur d'élite dans League of Legends et TeamFight Tactics.</p>
-	<p>Rejoignez dès maintenant notre communauté passionnée et transformez votre expérience de jeu !</p>
-
-	<h2>Vidéos explicatives</h2>
-	<div class="video-container">
-	<h3>Teamfights Tactics</h3>
-		<video width="560" height="315" controls>
-			<source src="{{ asset('videos/tft.mp4') }}" type="video/mp4">
-			Votre navigateur ne prend pas en charge la lecture de vidéos.
-		</video>
+	<div class="home-page">
+		<div>
+			<h1 class="title">Bienvenue sur notre application</h1>
+			<p>Notre application vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends.</p>
+			<p>Vous pouvez également découvrir les compositions créées par d'autres joueurs talentueux et bénéficier des conseils et des idées pour améliorer vos stratégies.</p>
+		</div>
+		<div>
+			<h2>Fonctionnement de l'application</h2>
+			<p>Notre plateforme vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. Lorsque vous jouez à ce jeu, la sélection des bons items pour votre personnage est crucial pour maximiser votre potentiel.</p>
+			<p>Notre application vous offre un outil puissant pour explorer les différentes combinaisons d'items disponibles et créer des compositions optimisées.</p>
+		</div>
+		<div>
+			<h2>Jeux pris en charge</h2>
+			<p>Notre application est conçue spécifiquement pour le jeu League of Legends. Ce jeu est connu pour son aspect stratégique et la nécessité de choisir les bons items pour chaque situation. Notre application vous aide à prendre des décisions éclairées pour améliorer vos performances dans ce jeu passionnant.</p>
+		</div>
+		<div>
+			<h2>Créez, partagez, améliorez</h2>
+			<p>Partagez vos compositions avec la communauté, découvrez les compositions créées par d'autres joueurs talentueux et bénéficiez des conseils et des idées pour améliorer vos stratégies. Ensemble, nous pouvons repousser les limites et atteindre de nouveaux sommets dans League of Legends.</p>
+		</div>
+		<div>
+			<h2>Rejoignez notre communauté</h2>
+			<p>Ne vous contentez pas de deviner les meilleurs items pour votre personnage. Utilisez notre application pour affiner vos compétences, gagner en compétitivité et devenir un joueur d'élite dans League of Legends.</p>
+			<p>Rejoignez dès maintenant notre communauté passionnée et transformez votre expérience de jeu !</p>
+		</div>
+		<div>
+			<h2>Vidéos explicatives</h2>
+			<div class="video-container">
+				<h3>League of Legends</h3>
+				<video class="video" controls>
+					<source src="{{ asset('videos/lol.mp4') }}" type="video/mp4">
+					Votre navigateur ne prend pas en charge la lecture de vidéos.
+				</video>
+			</div>
+		</div>
+		<div>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi necessitatibus eaque voluptate perferendis, dolorem magnam repellendus corporis? Odit architecto accusamus sequi placeat, beatae magnam, omnis sed ducimus ullam labore unde aliquam cupiditate possimus quis officia expedita! Inventore, nulla numquam fugiat nisi repudiandae, totam doloremque unde natus hic cum quae repellendus.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, ratione in magni non fugiat ipsam dolore dolorem. Consequatur dolores tempore sapiente voluptatem deserunt in laborum reiciendis quas eum quis ex ab beatae corporis explicabo, labore repellat similique, nostrum veniam, possimus suscipit magnam veritatis minus? Quibusdam optio deserunt vel molestiae non.
+			</p>
+		</div>
 	</div>
-	<div class="video-container">
-	<h3>League of Legends</h3>
-		<video width="560" height="315" controls>
-			<source src="{{ asset('videos/lol.mp4') }}" type="video/mp4">
-			Votre navigateur ne prend pas en charge la lecture de vidéos.
-		</video>
-	</div>
-
 {% endblock %}

@@ -1,40 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modification de l'item</h1>
-    <div class="container">
-        {{ form_start(form) }}
+	<div class="edit-items">
+		<h1 class="page-title">Modification de l'item</h1>
+		{{ form_start(form) }}
 
-        <div class="form-group">
-            {% if item.image is not empty %}
-                <img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="img-my-items">
-            {% endif %}
-            {{ form_widget(form.image) }}
-            <div class="form-error">
-                {{ form_errors(form.image) }}
-            </div>
-        </div>
+		<div class="form-group-images">
+			<div>
+				{% if item.image is not empty %}
+					<img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="item-image">
+				{% endif %}
+			</div>
+			<div>
+				{{ form_widget(form.image, {'attr': {'class': 'image-input'}}) }}
+				<div class="form-error">
+					{{ form_errors(form.image) }}
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.name) }}
+			{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
+			<div class="form-error">
+				{{ form_errors(form.name) }}
+			</div>
+		</div>
 
-        <div class="form-group">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-            <div class="form-error">
-                {{ form_errors(form.name) }}
-            </div>
-        </div>
+		<div class="form-group">
+			{{ form_label(form.price) }}
+			{{ form_widget(form.price, {'attr': {'class': 'price-input'}}) }}
+			<div class="form-error">
+				{{ form_errors(form.price) }}
+			</div>
+		</div>
 
-        <div class="form-group">
-            {{ form_label(form.price) }}
-            {{ form_widget(form.price) }}
-            <div class="form-error">
-                {{ form_errors(form.price) }}
-            </div>
-        </div>
+		<div class="form-group">
+			{{ form_row(form.submit, {'attr': {'class': 'submit-button'}}) }}
+		</div>
 
-        <div class="form-group">
-            {{ form_row(form.submit) }}
-        </div>
-
-        {{ form_end(form) }}
-    </div>
+		{{ form_end(form) }}
+	</div>
 {% endblock %}

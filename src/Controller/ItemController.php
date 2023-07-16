@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Item;
 use App\Form\ItemType;
 use App\Repository\ItemRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,7 +47,6 @@ class ItemController extends AbstractController
     {
         $item = new Item();
         $form = $this->createForm(ItemType::class, $item);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
@@ -83,7 +81,9 @@ class ItemController extends AbstractController
     public function edit(ItemRepository $repository, Request $request, EntityManagerInterface $manager, int $id) : Response
     {
         $item = $repository->findOneBy(['id' => $id]);
-        $form = $this->createForm(ItemType::class, $item);
+        $form = $this->createForm(ItemType::class, $item, [
+            'is_edit' => false
+        ]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();

@@ -1,38 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Création d'un item</h1>
-    <div class="container">
+	<div class="new-items">
+		<h1 class="page-title">Création d'un item</h1>
 
-        {{ form_start(form) }}
+		{{ form_start(form) }}
 
-        <div class="form-group">
-            {{ form_label(form.image) }}
-            {{ form_widget(form.image) }}
-            <div class="form-error">
-                {{ form_errors(form.image) }}
-            </div>
-        </div>
+		<div class="form-group-images">
+			{{ form_label(form.image) }}
+			{{ form_widget(form.image, {'attr': {'class': 'image-input'}}) }}
+			<div class="form-error">
+				{{ form_errors(form.image) }}
+			</div>
+		</div>
 
-        <div class="form-group">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-            <div class="form-error">
-                {{ form_errors(form.name) }}
-            </div>
-        </div>
+		<div class="form-group">
+			{{ form_label(form.name) }}
+			{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
+			<div class="form-error">
+				{{ form_errors(form.name) }}
+			</div>
+		</div>
 
-        <div class="form-group">
-            {{ form_label(form.price) }}
-            {{ form_widget(form.price) }}
-            <div class="form-error">
-                {{ form_errors(form.price) }}
-            </div>
-        </div>
+		<div class="form-group">
+			{{ form_label(form.price) }}
+			{{ form_widget(form.price, {'attr': {'class': 'price-input'}}) }}
+			<div class="form-error">
+				{{ form_errors(form.price) }}
+			</div>
+		</div>
 
-        <div class="form-group">
-            {{ form_row(form.submit) }}
-        </div>
-    </div>
-    {{ form_end(form) }}
+		<div class="form-group">
+			{{ form_row(form.submit, {'attr': {'class': 'submit-button'}}) }}
+		</div>
+	</div>
+	{{ form_end(form) }}
 {% endblock %}
