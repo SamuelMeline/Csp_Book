@@ -17,10 +17,10 @@ class Item
     private ?int $id;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
     private ?string $image;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
     #[Assert\Length(min: 2, max: 50)]
     private ?string $name;
 
@@ -92,5 +92,10 @@ class Item
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }
