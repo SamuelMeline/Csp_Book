@@ -62,13 +62,7 @@ class ItemType extends AbstractType
                 'constraints' => [
                     new Assert\PositiveOrZero(),
                 ]
-            ])
-            ->add('submit', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-form'
-                ],
-                'label' => 'Créer mon item'
-            ]);
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

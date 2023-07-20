@@ -1,13 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	Csp_Book - Nouvelle panoplie
-{% endblock %}
-
 {% block body %}
-	<div class="new-items">
-		<h1 class="page-title">Création d'une panoplie</h1>
-
+	<div class="edit-items">
+		<h1 class="page-title">Modification de la panoplie</h1>
 		{{ form_start(form) }}
 
 		<div class="form-group">
@@ -49,9 +44,10 @@
 				</div>
 			</div>
 
-			<button type="submit" class="btn-form-new">Créer ma panoplie</button>
+			<button type="submit" class="btn-form-edit">Modifier ma panoplie</button>
 
 		</div>
+
 		{{ form_end(form) }}
 	</div>
 {% endblock %}

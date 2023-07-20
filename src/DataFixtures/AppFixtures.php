@@ -28,7 +28,6 @@ class AppFixtures extends Fixture
             $build = new Build();
             $build->setName('Build ' . $j);
             $build->setDifficulty(mt_rand(1, 5));
-            $build->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis aliquam lacinia, nisl nunc aliquet nunc, qu');
             $build->setPrice(mt_rand(10000, 40000));
             $build->setIsFavorite(mt_rand(0, 1) == 1 ? true : false);
 

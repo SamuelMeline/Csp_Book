@@ -191,7 +191,7 @@ p {
 	margin-top: 5px;
 }
 
-.submit-button {
+.submit-button, .btn-form-edit, .btn-form-new {
 	display: inline-block;
 	background-color: #364918;
 	color: #fff;

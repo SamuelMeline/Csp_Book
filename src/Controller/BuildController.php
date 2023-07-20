@@ -36,18 +36,21 @@ class BuildController extends AbstractController
         ]);
     }
 
+    /**
+     * Affiche le formulaire de création d'une panoplie
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/panoplie/nouveau', name: 'build.new', methods: ['GET', 'POST'])]
-    public function new (Request $request, EntityManagerInterface $manager) : Response 
+    public function new(Request $request, EntityManagerInterface $manager): Response
     {
         $build = new Build();
         $form = $this->createForm(BuildType::class, $build);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-            // $imageFile = $form->get('image')->getData();
-            // $newImageName = uniqid() . '.' . $imageFile->getClientOriginalExtension();
-            // $imageFile->move($this->getParameter('images_directory'), $newImageName);
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            // $build->setImage($newImageName);
             $build = $form->getData();
 
             $manager->persist($build);
@@ -61,5 +64,56 @@ class BuildController extends AbstractController
         return $this->render('pages/build/new.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * Affiche le formulaire d'édition d'une panoplie
+     *
+     * @param ItemRepository $repository
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param integer $id
+     * @return Response
+     */
+    #[Route('/panoplie/edition/{id}', name: 'build.edit', methods: ['GET', 'POST'])]
+    public function edit(BuildRepository $repository, Request $request, EntityManagerInterface $manager, int $id): Response
+    {
+        $build = $repository->findOneBy(['id' => $id]);
+        $form = $this->createForm(BuildType::class, $build);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $build = $form->getData();
+
+            $manager->persist($build);
+            $manager->flush();
+
+            $this->addFlash('success', 'La panoplie a bien été modifiée.');
+
+            return $this->redirectToRoute('build.index');
+        }
+
+        return $this->render('pages/build/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Supprime une panoplie
+     *
+     * @param ItemRepository $repository
+     * @param EntityManagerInterface $manager
+     * @param integer $id
+     * @return Response
+     */
+    #[Route('/panoplie/suppression/{id}', name: 'build.delete', methods: ['GET'])]
+    public function delete(BuildRepository $repository, EntityManagerInterface $manager, int $id): Response
+    {
+        $build = $repository->findOneBy(['id' => $id]);
+        $manager->remove($build);
+        $manager->flush();
+
+        $this->addFlash('success', 'La panoplie a bien été supprimée.');
+
+        return $this->redirectToRoute('build.index');
     }
 }

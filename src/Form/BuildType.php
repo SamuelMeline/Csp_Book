@@ -27,22 +27,6 @@ class BuildType extends AbstractType
         // $isEdit = $options['is_edit'];
 
         $builder
-            // ->add('image', FileType::class, [
-            //     'required' => false,
-            //     'mapped' => $isEdit,
-            //     'constraints' => [
-            //         new Assert\Image([
-            //             'maxSize' => '5M',
-            //             'maxSizeMessage' => 'La taille de l\'image ne doit pas dépasser 5 Mo.',
-            //             'mimeTypes' => [
-            //                 'image/jpeg',
-            //                 'image/png',
-            //                 'image/gif',
-            //             ],
-            //             'mimeTypesMessage' => 'Le format de l\'image n\'est pas valide. Les formats acceptés sont : JPG, PNG et GIF.',
-            //         ]),
-            //     ],
-            // ])
             ->add('name', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
@@ -70,20 +54,6 @@ class BuildType extends AbstractType
                 ],
                 'constraints' => [
                     new Assert\PositiveOrZero(),
-                    new Assert\NotBlank()
-                ]
-            ])
-            ->add('description', TextareaType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                    'min' => 1,
-                    'max' => 5,
-                ],
-                'label' => 'Description',
-                'label_attr' => [
-                    'class' => 'form-label'
-                ],
-                'constraints' => [
                     new Assert\NotBlank()
                 ]
             ])
@@ -122,12 +92,6 @@ class BuildType extends AbstractType
                     'class' => 'form-check-input',
                 ],
                 'required' => false,
-            ])
-            ->add('submit', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-form'
-                ],
-                'label' => 'Créer ma Panoplie'
             ]);
         }
 
@@ -135,7 +99,6 @@ class BuildType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Build::class,
-            // 'is_edit' => true
         ]);
     }
 }

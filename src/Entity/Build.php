@@ -3,16 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\BuildRepository;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ORM\Entity(repositoryClass: BuildRepository::class)]
 #[UniqueEntity('name')]
 #[ORM\HasLifecycleCallbacks]
-#[ORM\Entity(repositoryClass: BuildRepository::class)]
 class Build
 {
     #[ORM\Id]
@@ -35,10 +34,6 @@ class Build
     #[Assert\Positive()]
     #[Assert\LessThanOrEqual(5)]
     private ?int $difficulty = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank()]
-    private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
     #[Assert\PositiveOrZero]
@@ -73,19 +68,6 @@ class Build
     {
         return $this->id;
     }
-
-        /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    // public function getImage(): ?string
-    // {
-    //     return $this->image;
-    // }
-
-    // public function setImage(?string $image): void
-    // {
-    //     $this->image = $image;
-    // }
 
     /**
      * @return Collection<int, Item>
@@ -131,18 +113,6 @@ class Build
     public function setDifficulty(?int $difficulty): static
     {
         $this->difficulty = $difficulty;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
 
         return $this;
     }
@@ -193,5 +163,10 @@ class Build
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

@@ -65,10 +65,10 @@
 						</td>
 						<td>{{ build.createdAt|date('d/m/Y') }}</td>
 						<td>
-							<a href="{{ path('item.edit', { id : build.id }) }}" class="edit-button">Modifier</a>
+							<a href="{{ path('build.edit', { id : build.id }) }}" class="edit-button">Modifier</a>
 						</td>
 						<td>
-							<a href="{{ path('item.delete', { id : build.id }) }}" class="delete-button" data-url="{{ path('item.delete', {id: build.id}) }}">Supprimer</a>
+							<a href="{{ path('build.delete', { id : build.id }) }}" class="delete-button" data-url="{{ path('build.delete', {id: build.id}) }}">Supprimer</a>
 						</td>
 					</tr>
 				{% endfor %}
