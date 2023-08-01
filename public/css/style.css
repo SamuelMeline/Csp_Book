@@ -200,6 +200,10 @@ p {
 	text-decoration: none;
 }
 
+.none {
+	display: none;
+}
+
 /* Pagination */
 .navigation {
 	display: flex;

@@ -81,17 +81,9 @@ class BuildType extends AbstractType
             ])
             ->add('items', EntityType::class, [
                 'class' => Item::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => true,
-                'label' => 'Items',
-                'label_attr' => [
-                    'class' => 'form-label'
-                ],
-                'attr' => [
-                    'class' => 'form-check-input',
-                ],
-                'required' => false,
+                'multiple' => true,  // Permet de sélectionner plusieurs items
+                'expanded' => true,  // Affiche les items sous forme de cases à cocher
+                'choice_label' => false,  // Propriété de l'entité Item à afficher dans le select
             ]);
         }
 

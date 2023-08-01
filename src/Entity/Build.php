@@ -19,10 +19,9 @@ class Build
     #[ORM\Column]
     private ?int $id = null;
 
-    // #[ORM\Column]
-    // private ?string $image;
-
+    
     #[ORM\ManyToMany(targetEntity: Item::class)]
+    #[Assert\Count(min: 5)]
     private Collection $items;
 
     #[ORM\Column(length: 50)]
