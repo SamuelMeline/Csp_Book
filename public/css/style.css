@@ -187,8 +187,12 @@ p {
 }
 
 .form-error {
-	color: #dc3545;
-	margin-top: 5px;
+	background-color: #eb9595;
+	color: red;
+	width: 200px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
 }
 
 .submit-button, .btn-form-edit, .btn-form-new {

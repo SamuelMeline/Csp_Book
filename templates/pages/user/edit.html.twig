@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Csp_Book - Modification de l'utilisateur
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Formulaire de modification des informations des utilisateurs</h1>
+
+		{% for message in app.flashes('warning') %}
+			<div class="form-error">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		{{ form(form) }}
+		</div>
+	{% endblock %}
