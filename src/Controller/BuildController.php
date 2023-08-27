@@ -26,7 +26,7 @@ class BuildController extends AbstractController
     public function index(BuildRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $builds = $paginator->paginate(
-            $repository->findAll(),
+            $repository->findBy(['user' => $this->getUser()]),
             $request->query->getInt('page', 1),
             6
         );
@@ -52,6 +52,7 @@ class BuildController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $build = $form->getData();
+            $build->setUser($this->getUser());
 
             $manager->persist($build);
             $manager->flush();

@@ -26,7 +26,7 @@ class ItemController extends AbstractController
     public function index(ItemRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $items = $paginator->paginate(
-            $repository->findAll(),
+            $repository->findBy(['user' => $this->getUser()]),
             $request->query->getInt('page', 1),
             6
         );
@@ -54,6 +54,7 @@ class ItemController extends AbstractController
             $imageFile->move($this->getParameter('images_directory'), $newImageName);
 
             $item->setImage($newImageName);
+            $item->setUser($this->getUser());
 
             $manager->persist($item);
             $manager->flush();

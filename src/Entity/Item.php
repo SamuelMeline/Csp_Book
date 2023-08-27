@@ -33,6 +33,10 @@ class Item
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $createdAt;
 
+    #[ORM\ManyToOne(inversedBy: 'items')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     /**
      * Item constructor.
      */
@@ -97,5 +101,17 @@ class Item
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

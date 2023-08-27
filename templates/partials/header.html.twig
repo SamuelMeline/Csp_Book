@@ -1,14 +1,47 @@
 <head>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<nav>
-    <ul>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/panoplies">Panoplies de la communauté</a></li>
-      <li><a href="/item">Mes items</a></li>
-      <li><a href="/panoplie">Mes panoplies</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-  </nav>
-  
+<div>
+	<nav
+		class="d-flex justify-content-between">
+		<!-- Utilisez "justify-content-between" pour aligner les éléments aux extrémités -->
+		<ul class="navbar-nav">
+			<li>
+				<a href="{{ path('home.index') }}">Accueil</a>
+			</li>
+			<li>
+				<a href="{{ path('home.index') }}">Panoplies de la communauté</a>
+			</li>
+			{% if app.user %}
+				<li>
+					<a href="{{ path('item.index') }}">Mes items</a>
+				</li>
+			</li>
+			<li>
+				<a href="{{ path('build.index') }}">Mes panoplies</a>
+			</li>
+		{% endif %}
+	</ul>
+	<ul class="navbar-nav">
+		{% if app.user %}
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }}</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
+					<a class="dropdown-item" href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
+          <div class="dropdawn-divider"></div>
+					<a class="dropdown-item" href="{{ path('security.logout') }}">Déconnexion</a>
+				</div>
+			</li>
+		{% else %}
+			<li>
+				<a href="{{ path('security.login') }}">Connexion</a>
+			</li>
+		</li>
+		<li>
+			<a href="{{ path('security.registration') }}">Inscription</a>
+		</li>
+    {% endif %}
+	</ul>
+</nav></div>

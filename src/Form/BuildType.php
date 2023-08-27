@@ -2,26 +2,35 @@
 
 namespace App\Form;
 
-use App\Entity\Build;
 use App\Entity\Item;
-use Symfony\Component\Form\AbstractType;
+use App\Entity\Build;
+use App\Repository\ItemRepository;
 // use phpDocumentor\Reflection\Types\Integer;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+// use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
-// use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 
 class BuildType extends AbstractType
 {
+    private $token;
+
+    public function __construct(TokenStorageInterface $token)
+    {
+        $this->token = $token;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // $isEdit = $options['is_edit'];
@@ -81,6 +90,12 @@ class BuildType extends AbstractType
             ])
             ->add('items', EntityType::class, [
                 'class' => Item::class,
+                'query_builder' => function (ItemRepository $r) {
+                    return $r->createQueryBuilder('i')
+                        ->where('i.user = :user')
+                        ->orderBy('i.name', 'ASC')
+                        ->setParameter('user', $this->token->getToken()->getUser());
+                },
                 'multiple' => true,  // Permet de sélectionner plusieurs items
                 'expanded' => true,  // Affiche les items sous forme de cases à cocher
                 'choice_label' => false,  // Propriété de l'entité Item à afficher dans le select

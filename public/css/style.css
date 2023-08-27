@@ -9,6 +9,10 @@ body {
 }
 
 /* Navbar */
+.navbar-nav {
+  display: block;
+}
+
 nav {
 	background-color: #f2f2f2;
 	padding: 12px;
@@ -187,7 +191,7 @@ p {
 }
 
 .form-error {
-	background-color: #eb9595;
+	/* background-color: #eb9595; */
 	color: red;
 	width: 200px;
 	padding: 10px;

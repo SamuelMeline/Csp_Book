@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -51,10 +53,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotNull()]
     private \DateTimeImmutable $updatedAt;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Item::class, orphanRemoval: true)]
+    private Collection $items;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Build::class, orphanRemoval: true)]
+    private Collection $builds;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
+        $this->items = new ArrayCollection();
+        $this->builds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -190,6 +200,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Item>
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function addItem(Item $item): static
+    {
+        if (!$this->items->contains($item)) {
+            $this->items->add($item);
+            $item->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItem(Item $item): static
+    {
+        if ($this->items->removeElement($item)) {
+            // set the owning side to null (unless already changed)
+            if ($item->getUser() === $this) {
+                $item->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Build>
+     */
+    public function getBuilds(): Collection
+    {
+        return $this->builds;
+    }
+
+    public function addBuild(Build $build): static
+    {
+        if (!$this->builds->contains($build)) {
+            $this->builds->add($build);
+            $build->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBuild(Build $build): static
+    {
+        if ($this->builds->removeElement($build)) {
+            // set the owning side to null (unless already changed)
+            if ($build->getUser() === $this) {
+                $build->setUser(null);
+            }
+        }
 
         return $this;
     }
