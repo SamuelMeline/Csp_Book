@@ -10,6 +10,8 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BuildController extends AbstractController
@@ -23,6 +25,7 @@ class BuildController extends AbstractController
      * @return Response
      */
     #[Route('/panoplie', name: 'build.index', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(BuildRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $builds = $paginator->paginate(
@@ -43,6 +46,7 @@ class BuildController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */
+    #[IsGranted('ROLE_USER')]
     #[Route('/panoplie/nouveau', name: 'build.new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
@@ -70,16 +74,16 @@ class BuildController extends AbstractController
     /**
      * Affiche le formulaire d'édition d'une panoplie
      *
-     * @param ItemRepository $repository
+     * @param Build $build
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param integer $id
      * @return Response
      */
+    #[Security("is_granted('ROLE_USER') and user === build.getUser()")]
     #[Route('/panoplie/edition/{id}', name: 'build.edit', methods: ['GET', 'POST'])]
-    public function edit(BuildRepository $repository, Request $request, EntityManagerInterface $manager, int $id): Response
+    public function edit(Build $build, Request $request, EntityManagerInterface $manager, int $id): Response
     {
-        $build = $repository->findOneBy(['id' => $id]);
         $form = $this->createForm(BuildType::class, $build);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

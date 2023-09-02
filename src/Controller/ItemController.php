@@ -10,6 +10,8 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ItemController extends AbstractController
@@ -23,6 +25,7 @@ class ItemController extends AbstractController
      * @return Response
      */
     #[Route('/item', name: 'item.index', methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
     public function index(ItemRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $items = $paginator->paginate(
@@ -35,14 +38,15 @@ class ItemController extends AbstractController
             'items' => $items
         ]);
     }
-/**
- * Affiche le formulaire de création d'un item
- *
- * @param Request $request
- * @param EntityManagerInterface $manager
- * @return Response
- */
+    /**
+     * Affiche le formulaire de création d'un item
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/item/nouveau', name: 'item.new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
         $item = new Item();
@@ -72,20 +76,22 @@ class ItemController extends AbstractController
     /**
      * Affiche le formulaire d'édition d'un item
      *
-     * @param ItemRepository $repository
+     * @param Item $item
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param integer $id
      * @return Response
      */
+    #[Security("is_granted('ROLE_USER') and user === item.getUser()")]
     #[Route('/item/edition/{id}', name: 'item.edit', methods: ['GET', 'POST'])]
-    public function edit(ItemRepository $repository, Request $request, EntityManagerInterface $manager, int $id) : Response
+    public function edit(Item $item, Request $request, EntityManagerInterface $manager, int $id): Response
     {
-        $item = $repository->findOneBy(['id' => $id]);
         $form = $this->createForm(ItemType::class, $item, [
             'is_edit' => false
         ]);
+
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
             $newImageName = uniqid() . '.' . $imageFile->getClientOriginalExtension();
@@ -116,7 +122,7 @@ class ItemController extends AbstractController
      * @return Response
      */
     #[Route('/item/suppression/{id}', name: 'item.delete', methods: ['GET'])]
-    public function delete(ItemRepository $repository, EntityManagerInterface $manager, int $id) : Response
+    public function delete(ItemRepository $repository, EntityManagerInterface $manager, int $id): Response
     {
         $item = $repository->findOneBy(['id' => $id]);
         $manager->remove($item);
