@@ -98,7 +98,7 @@ class BuildType extends AbstractType
                 },
                 'multiple' => true,  // Permet de sélectionner plusieurs items
                 'expanded' => true,  // Affiche les items sous forme de cases à cocher
-                'choice_label' => false,  // Propriété de l'entité Item à afficher dans le select
+                'choice_label' => 'name',  // Propriété de l'entité Item à afficher dans le select
             ]);
         }
 

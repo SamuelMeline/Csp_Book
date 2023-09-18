@@ -40,6 +40,29 @@ class BuildController extends AbstractController
     }
 
     /**
+     * Affiche la liste des panoplies publiques
+     *
+     * @param BuildRepository $repository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     */
+    #[Route('/panoplie/publique', name: 'build.index_public', methods: ['GET'])]
+    public function indexPublic(BuildRepository $repository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $builds = $paginator->paginate(
+            $repository->findPublicBuild(null),
+            $request->query->getInt('page', 1),
+            5
+        );
+
+        return $this->render('pages/build/index_public.html.twig', [
+            'builds' => $builds
+        ]);
+    }
+
+
+    /**
      * Affiche le formulaire de création d'une panoplie
      *
      * @param Request $request
@@ -47,7 +70,7 @@ class BuildController extends AbstractController
      * @return Response
      */
     #[IsGranted('ROLE_USER')]
-    #[Route('/panoplie/nouveau', name: 'build.new', methods: ['GET', 'POST'])]
+    #[Route('/panoplie/nouveau/', name: 'build.new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
         $build = new Build();
@@ -68,6 +91,21 @@ class BuildController extends AbstractController
 
         return $this->render('pages/build/new.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Affiche une panoplie
+     * 
+     * @param Build $build
+     * @return Response
+     */
+    #[Security("is_granted('ROLE_USER') and build.getIsPublic() === true")]
+    #[Route('/panoplie/{id}', name: 'build.show', methods: ['GET'])]
+    public function show(Build $build): Response
+    {
+        return $this->render('pages/build/show.html.twig', [
+            'build' => $build
         ]);
     }
 

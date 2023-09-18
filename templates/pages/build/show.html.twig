@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Csp_Book -
+	{{ build.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>
+			{{ build.name }}
+		</h1>
+		<span>Crée le :
+			{{ build.createdAt|date('d/m/Y') }}</span>
+		<p>
+			Difficulté :
+			{{ build.difficulty }}
+		</p>
+		<p>
+			Prix :
+			{{ build.price }}
+		</p>
+        <div>
+		<p>Items</p>
+            {% for item in build.items %}
+			{{ item.name }}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

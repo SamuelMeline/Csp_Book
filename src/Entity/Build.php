@@ -43,6 +43,10 @@ class Build
     private ?bool $isFavorite = null;
 
     #[ORM\Column]
+    private ?bool $isPublic = null;
+    
+
+    #[ORM\Column]
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -53,6 +57,7 @@ class Build
     #[ORM\ManyToOne(inversedBy: 'builds')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
 
     public function __construct()
     {
@@ -132,7 +137,7 @@ class Build
         return $this;
     }
 
-    public function isIsFavorite(): ?bool
+    public function getIsFavorite(): ?bool
     {
         return $this->isFavorite;
     }
@@ -140,6 +145,18 @@ class Build
     public function setIsFavorite(bool $isFavorite): static
     {
         $this->isFavorite = $isFavorite;
+
+        return $this;
+    }
+
+    public function getIsPublic(): ?bool
+    {
+        return $this->isPublic;
+    }
+
+    public function setIsPublic(bool $isPublic): static
+    {
+        $this->isPublic = $isPublic;
 
         return $this;
     }
@@ -184,4 +201,5 @@ class Build
 
         return $this;
     }
+
 }

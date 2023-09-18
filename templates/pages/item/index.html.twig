@@ -60,6 +60,7 @@
             </div>
         {% else %}
             <p>Il n'y a pas d'items</p>
+            <a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
         {% endif %}
     </div>
 {% endblock %}

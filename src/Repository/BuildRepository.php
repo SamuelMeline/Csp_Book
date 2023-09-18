@@ -20,4 +20,24 @@ class BuildRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Build::class);
     }
+
+    /**
+     * Récupère les dernières panoplies publiques
+     *
+     * @param integer $nbBuilds
+     * @return array
+     */
+    public function findPublicBuild(?int $nbBuilds): array
+    {
+        $queryBuilder = $this->createQueryBuilder('b')
+            ->where('b.isPublic = 1')
+            ->orderBy('b.createdAt', 'DESC');
+
+        if ($nbBuilds !== 0 || !$nbBuilds !== null) {
+            $queryBuilder->setMaxResults($nbBuilds);
+        }
+
+        return $queryBuilder->getQuery()
+            ->getResult();
+    }
 }
