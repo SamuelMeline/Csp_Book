@@ -2,12 +2,13 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\User;
 use App\Entity\Item;
+use App\Entity\Mark;
+use App\Entity\User;
 use App\Entity\Build;
 use Faker\Factory as FakerFactory;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -54,6 +55,7 @@ class AppFixtures extends Fixture
         }
 
         // Builds
+        $builds = [];
         for ($j = 1; $j < 10; $j++) {
             $build = new Build();
             $build->setName('Build ' . $j);
@@ -74,6 +76,18 @@ class AppFixtures extends Fixture
 
             $builds[] = $build;
             $manager->persist($build);
+        }
+
+        //Marks
+        foreach ($builds as $build) {
+            for ($m = 0; $m < mt_rand(0, 4); $m++) {
+                $mark = new Mark();
+                $mark->setMark(mt_rand(1, 5));
+                $mark->setUser($users[mt_rand(0, count($users) - 1)]);
+                $mark->setBuild($build);
+
+                $manager->persist($mark);
+            }
         }
 
         $manager->flush();

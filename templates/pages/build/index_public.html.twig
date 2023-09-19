@@ -25,6 +25,7 @@
 					<th>Numéro</th>
 					<th>Nom</th>
 					<th>Items</th>
+					<th>Note</th>
 					<th>Prix</th>
 					<th>Difficulté</th>
 					<th>Date de création</th>
@@ -42,6 +43,13 @@
 									<img src="{{ asset('images/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
 								{% endif %}
 							{% endfor %}
+						</td>
+						<td>
+							{% if build.average is null %}
+								Non renseigné
+							{% else %}
+									<span class="build-average">{{ build.average|number_format(2, ',', ' ') }} / 5</span>
+							{% endif %}
 						</td>
 						<td>
 							{% if build.price is null %}

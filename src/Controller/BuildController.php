@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Mark;
 use App\Entity\Build;
+use App\Form\MarkType;
 use App\Form\BuildType;
 use App\Repository\BuildRepository;
+use App\Repository\MarkRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -101,11 +105,38 @@ class BuildController extends AbstractController
      * @return Response
      */
     #[Security("is_granted('ROLE_USER') and build.getIsPublic() === true")]
-    #[Route('/panoplie/{id}', name: 'build.show', methods: ['GET'])]
-    public function show(Build $build): Response
+    #[Route('/panoplie/{id}', name: 'build.show', methods: ['GET', 'POST'])]
+    public function show(Build $build, Request $request, MarkRepository $markRepository, EntityManagerInterface $manager): Response
     {
+        $mark = new Mark();
+        $form = $this->createForm(MarkType::class, $mark);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $mark->setUser($this->getUser())
+                ->setBuild($build);
+
+            $existingMark = $markRepository->findOneBy([
+                'user' => $this->getUser(),
+                'build' => $build
+            ]);
+            
+            if(!$existingMark) {
+                $manager->persist($mark);
+            }else {
+                $existingMark->setMark($mark->getMark());
+            }
+
+            $manager->flush();
+
+            $this->addFlash('success', 'La panoplie a bien été notée.');
+
+            return $this->redirectToRoute('build.show', ['id' => $build->getId()]);
+        }
+
         return $this->render('pages/build/show.html.twig', [
-            'build' => $build
+            'build' => $build,
+            'form' => $form->createView()
         ]);
     }
 
