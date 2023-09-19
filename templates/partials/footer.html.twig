@@ -6,11 +6,10 @@
     <div class="footer">
       <div class="footer-links">
         <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/panoplies">Panoplies de la communauté</a></li>
-        <li><a href="/item">Mes items</a></li>
-        <li><a href="/panoplie">Mes panoplies</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="{{ path('home.index') }}">Accueil</a></li>
+        <li><a href="{{ path('build.index_public') }}">Panoplies de la communauté</a></li>
+        <li><a href="{{ path('item.index') }}">Mes items</a></li>
+        <li><a href="{{ path('build.index') }}">Mes panoplies</a></li>
         </ul>
       </div>
       <div class="footer-info">
