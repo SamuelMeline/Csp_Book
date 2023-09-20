@@ -78,11 +78,11 @@ class BuildType extends AbstractType
                     new Assert\PositiveOrZero(),
                 ]
             ])
-            ->add('isFavorite', CheckboxType::class, [
+            ->add('isPublic', CheckboxType::class, [
                 'attr' => [
                     'class' => 'form-check-input',
                 ],
-                'label' => 'Favoris',
+                'label' => 'Publique',
                 'label_attr' => [
                     'class' => 'form-check-label'
                 ],

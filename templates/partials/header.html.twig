@@ -33,7 +33,8 @@
 					<div class="dropdawn-divider"></div>
 					{% if 'ROLE_ADMIN' in app.user.roles %}
 						<a class="dropdown-item" href="{{ path('admin.index') }}">Administration</a>
-						<div class="dropdawn-divider"></div>
+						<a class="dropdown-item" href="{{ path('search_form') }}">Recherche d'utilisateur</a>	
+					<div class="dropdawn-divider"></div>
 					{% endif %}
 					<a class="dropdown-item" href="{{ path('security.logout') }}">Déconnexion</a>
 				</div>

@@ -10,6 +10,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,6 +39,42 @@ class ItemController extends AbstractController
             'items' => $items
         ]);
     }
+
+    /**
+     * Rechercher des items
+     *
+     * @param Request $request
+     * @param BuildRepository $buildRepository
+     * @return JsonResponse
+     */
+    #[Route('/search-items', name: 'search.items')]
+    public function searchBuilds(Request $request, ItemRepository $itemRepository): JsonResponse
+    {
+        if ($request->query->has('item')) {
+            $searchTerm = $request->query->get('item');
+            $items = $itemRepository->findItemsBySearchTerm($searchTerm);
+
+            // Créez un tableau pour stocker les résultats au format JSON
+            $results = [];
+            foreach ($items as $item) {
+                
+                $results[] = [
+                    'image' => $item->getImage(),
+                    'name' => $item->getName(),
+                    'price' => $item->getPrice(),
+                    // Ajoutez d'autres données de panoplie ici selon vos besoins
+                ];
+            }
+
+            // Retournez les résultats au format JSON
+            return new JsonResponse($results);
+        }
+
+        // Si aucun terme de recherche n'est fourni, retournez une réponse JSON vide
+        return new JsonResponse([]);
+    }
+
+    
     /**
      * Affiche le formulaire de création d'un item
      *

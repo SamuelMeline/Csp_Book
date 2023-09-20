@@ -219,9 +219,16 @@ p {
 	margin-top: 20px;
 }
 
-.pagination {
-	/* display: inline-block; */
-}
+/* nav {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	width: 80%;
+} */
+
+/* .pagination {
+	justify-content: center;
+} */
 
 .pagination a {
 	display: inline-block;
@@ -292,4 +299,19 @@ footer {
   margin: 0;
   font-size: 14px;
   color: #777;
+}
+
+.image-input {
+	width: 100%;
+	padding: 20px;
+	font-size: 16px;
+}
+
+.search-item, #search-item {
+	text-align: center;
+}
+
+div#search-results-items {
+    max-height: 300px; /* Ajustez cette valeur selon vos besoins */
+    overflow-y: auto; /* Activez la barre de défilement verticale si nécessaire */
 }

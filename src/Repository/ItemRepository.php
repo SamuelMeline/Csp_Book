@@ -21,4 +21,13 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
+    // Ajoutez la méthode de recherche de panoplies
+    public function findItemsBySearchTerm(string $searchTerm): array
+    {
+        return $this->createQueryBuilder('i')
+            ->where('i.name LIKE :searchTerm')
+            ->setParameter('searchTerm', '%' . $searchTerm . '%')
+            ->getQuery()
+            ->getResult();
+    }
 }

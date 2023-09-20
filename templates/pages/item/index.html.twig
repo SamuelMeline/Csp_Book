@@ -46,7 +46,7 @@
                             </td>
                             <td>{{ item.createdAt|date('d/m/Y') }}</td>
                             <td>
-                                <a href="{{ path('item.edit', { id : item.id }) }}" class="edit-button">Modifier</a>
+                                <a href="{{ path('item.edit', { id : item.id }) }}" class="edit-button" id"testedit">Modifier</a>
                             </td>
                             <td>
                                 <a href="{{ path('item.delete', { id : item.id }) }}" class="delete-button" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>

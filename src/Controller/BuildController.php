@@ -6,14 +6,16 @@ use App\Entity\Mark;
 use App\Entity\Build;
 use App\Form\MarkType;
 use App\Form\BuildType;
-use App\Repository\BuildRepository;
-use App\Repository\MarkRepository;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query\Expr\Orx;
+use App\Repository\MarkRepository;
+use App\Repository\BuildRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -64,7 +66,6 @@ class BuildController extends AbstractController
             'builds' => $builds
         ]);
     }
-
 
     /**
      * Affiche le formulaire de création d'une panoplie
@@ -120,10 +121,10 @@ class BuildController extends AbstractController
                 'user' => $this->getUser(),
                 'build' => $build
             ]);
-            
-            if(!$existingMark) {
+
+            if (!$existingMark) {
                 $manager->persist($mark);
-            }else {
+            } else {
                 $existingMark->setMark($mark->getMark());
             }
 

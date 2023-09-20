@@ -40,9 +40,6 @@ class Build
     private ?float $price = null;
 
     #[ORM\Column]
-    private ?bool $isFavorite = null;
-
-    #[ORM\Column]
     private ?bool $isPublic = null;
 
 
@@ -138,18 +135,6 @@ class Build
     public function setPrice(?float $price): static
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getIsFavorite(): ?bool
-    {
-        return $this->isFavorite;
-    }
-
-    public function setIsFavorite(bool $isFavorite): static
-    {
-        $this->isFavorite = $isFavorite;
 
         return $this;
     }
