@@ -6,42 +6,43 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-
-	{% for flashMessage in app.session.flashbag.get('success') %}
-			<div class="flash-success">
-				{{ flashMessage }}
-			</div>
-		{% endfor %}
-
-		<h1>
-			{{ build.name }}
-		</h1>
-
-		<p>La note de cette panoplie est de
-			{{ build.average|number_format(2, ',', ' ') }}
-			/ 5
-		</p>
-
-		<span>Crée le :
-			{{ build.createdAt|date('d/m/Y') }}</span>
-		<p>
-			Difficulté :
-			{{ build.difficulty }}
-		</p>
-		<p>
-			Prix :
-			{{ build.price }}
-		</p>
-		<div>
-			<p>Items</p>
-			{% for item in build.items %}
-				{{ item.name }}
+	<main class="content">
+		<div class="container">
+			{% for flashMessage in app.session.flashbag.get('success') %}
+				<div class="flash-success">
+					{{ flashMessage }}
+				</div>
 			{% endfor %}
-		</div>
 
-		<div class="mark">
-			{{ form(form) }}
+			<h1>
+				{{ build.name }}
+			</h1>
+
+			<p>La note de cette panoplie est de
+				{{ build.average|number_format(2, ',', ' ') }}
+				/ 5
+			</p>
+
+			<span>Crée le :
+				{{ build.createdAt|date('d/m/Y') }}</span>
+			<p>
+				Difficulté :
+				{{ build.difficulty }}
+			</p>
+			<p>
+				Prix :
+				{{ build.price }}
+			</p>
+			<div>
+				<p>Items</p>
+				{% for item in build.items %}
+					{{ item.name }}
+				{% endfor %}
 			</div>
-		</div>
+
+			<div class="mark">
+				{{ form(form) }}
+				</div>
+			</div>
+		</main>
 	{% endblock %}

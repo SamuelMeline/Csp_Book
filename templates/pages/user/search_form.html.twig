@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
-    <h1>Rechercher un utilisateur</h1>
+{% block body %}
+	<main class="content">
+		<div class="container">
+			<h1>Rechercher un utilisateur</h1>
 
-    <form action="{{ path('search_users') }}" method="GET">
-        <input type="text" name="user" id="search-user" placeholder="Rechercher un utilisateur">
-    </form>
+			<form action="{{ path('search_users') }}" method="GET">
+				<input type="text" name="user" id="search-user" placeholder="Rechercher un utilisateur">
+			</form>
 
-    <div id="search-results"></div>
+			<div id="search-results"></div>
+		</div>
+	</main>
 {% endblock %}

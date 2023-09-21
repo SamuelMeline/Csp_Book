@@ -1,0 +1,287 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+/* Home Page */
+.home-page {
+	max-width: 70%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.title {
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 15px;
+}
+
+h3 {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+p {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 15px;
+}
+
+.video-container {
+	margin-bottom: 30px;
+}
+
+.video {
+	width: 100%;
+	max-width: 560px;
+	height: auto;
+}
+
+/* Styles pour index.html.twig */
+
+.my-items {
+	max-width: 80%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.page-title {
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+
+.flash-success {
+	background-color: #dff0d8;
+	color: #3c763d;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+.item-count p {
+	font-size: 18px;
+}
+
+.create-item-btn,
+.edit-button,
+.delete-button {
+	display: inline-block;
+	background-color: #364918;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-bottom: 20px;
+}
+
+.item-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.item-table th,
+.item-table td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+}
+
+.item-table th {
+	font-weight: bold;
+}
+
+.item-image {
+	width: 50px;
+	height: auto;
+	object-fit: cover;
+	margin-right: 5px;
+	border-radius: 5px;
+}
+
+.item-price-container {
+	display: flex;
+	align-items: center;
+}
+
+.gold-image {
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+	vertical-align: middle;
+	border-radius: 10px;
+}
+
+.edit-button {
+	background-color: #052950;
+	margin-bottom: 0;
+}
+
+.delete-button {
+	background-color: #880e1a;
+	margin-bottom: 0;
+}
+
+.navigation {
+	margin-top: 20px;
+}
+
+/* Styles pour edit.html.twig et new.html.twig */
+
+.form-group-images {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.edit-items,
+.new-items {
+	max-width: 60%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.image-input,
+.name-input,
+.price-input {
+	width: 100%;
+	padding: 5px;
+	font-size: 16px;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-error {
+	/* background-color: #eb9595; */
+	color: red;
+	width: 200px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+.submit-button,
+.btn-form-edit,
+.btn-form-new {
+	display: inline-block;
+	background-color: #364918;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+.none {
+	display: none;
+}
+
+/* Pagination */
+.navigation {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+/* nav {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	width: 80%;
+} */
+
+/* .pagination {
+	justify-content: center;
+} */
+
+.pagination a {
+	display: inline-block;
+	padding: 5px 10px;
+	text-decoration: none;
+	background-color: #f2f2f2;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-right: 5px;
+}
+
+.pagination .active a {
+	background-color: #333;
+	color: #fff;
+}
+
+.pagination a:hover {
+	background-color: #eaeaea;
+}
+
+.pagination .disabled a {
+	pointer-events: none;
+	background-color: #ccc;
+	color: #888;
+}
+
+/* Footer */
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.footer {
+	max-width: 80%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 120px;
+}
+
+.footer-links ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.footer-links li {
+	margin-right: 40px;
+}
+
+.footer-links a {
+	color: #333;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+	color: #666;
+}
+
+.footer-info p {
+	margin: 0;
+	font-size: 14px;
+	color: #777;
+}
+
+.image-input {
+	width: 100%;
+	padding: 20px;
+	font-size: 16px;
+}
+
+.search-item,
+#search-item {
+	/* text-align: center; */
+	margin-top: 20px;
+}
+
+div#search-results-items {
+	max-height: 300px; /* Ajustez cette valeur selon vos besoins */
+	overflow-y: auto; /* Activez la barre de défilement verticale si nécessaire */
+	margin: 0 auto;
+}

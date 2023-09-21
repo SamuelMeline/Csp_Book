@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    $("#menu-icon").click(function() {
+        $("#menu-dropdown").toggle();
+    });
+});
+
 const deleteButtons = document.querySelectorAll(".delete-button");
 
 deleteButtons.forEach((button) => {

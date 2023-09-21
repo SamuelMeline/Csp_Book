@@ -53,7 +53,7 @@ $(document).ready(function () {
 						tableHeadRow.append(
 							$("<th>").text("Items"),
 							$("<th>").text("Nom"),
-							$("<th>").text("Prix"),
+							$("<th>").text("Prix")
 						);
 						tableHead.append(tableHeadRow);
 
@@ -61,9 +61,13 @@ $(document).ready(function () {
 						$.each(data, function (index, item) {
 							var tableDataRow = $("<tr>");
 							tableDataRow.append(
-                                $("<td>").html("<img src='/images/" + item.image + "' alt='item image' class='item-image'>"),
-                                $("<td>").text(item.name),
-								$("<td>").html(item.price),
+								$("<td>").html(
+									"<img src='/images/" +
+										item.image +
+										"' alt='item image' class='item-image'>"
+								),
+								$("<td>").text(item.name),
+								$("<td>").html(item.price)
 							);
 							tableBody.append(tableDataRow);
 						});

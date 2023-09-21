@@ -1,42 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div class="edit-items">
-		<h1 class="page-title">Modification de l'item</h1>
-		{{ form_start(form) }}
+	<main class="content">
+		<div class="edit-items">
+			<h1 class="page-title">Modification de l'item</h1>
+			{{ form_start(form) }}
 
-		<div class="form-group-images">
-			<div>
-				{% if item.image is not empty %}
-					<img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="item-image">
-				{% endif %}
-			</div>
-			<div>
-				{{ form_widget(form.image, {'attr': {'class': 'image-input'}}) }}
-				<div class="form-error">
-					{{ form_errors(form.image) }}
+			<div class="form-group-images">
+				<div>
+					{% if item.image is not empty %}
+						<img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="item-image">
+					{% endif %}
+				</div>
+				<div>
+					{{ form_widget(form.image, {'attr': {'class': 'image-input'}}) }}
+					<div class="form-error">
+						{{ form_errors(form.image) }}
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			{{ form_label(form.name) }}
-			{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
-			<div class="form-error">
-				{{ form_errors(form.name) }}
+			<div class="form-group">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
+				<div class="form-error">
+					{{ form_errors(form.name) }}
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group">
-			{{ form_label(form.price) }}
-			{{ form_widget(form.price, {'attr': {'class': 'price-input'}}) }}
-			<div class="form-error">
-				{{ form_errors(form.price) }}
+			<div class="form-group">
+				{{ form_label(form.price) }}
+				{{ form_widget(form.price, {'attr': {'class': 'price-input'}}) }}
+				<div class="form-error">
+					{{ form_errors(form.price) }}
+				</div>
 			</div>
+
+			<button type="submit" class="btn-form-edit">Modifier mon item</button>
+
+
+			{{ form_end(form) }}
 		</div>
-
-		<button type="submit" class="btn-form-edit">Modifier mon item</button>
-
-
-		{{ form_end(form) }}
-	</div>
+	</main>
 {% endblock %}

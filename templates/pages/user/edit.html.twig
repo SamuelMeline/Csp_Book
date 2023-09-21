@@ -4,15 +4,17 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-		<h1>Formulaire de modification des informations des utilisateurs</h1>
+	<main class="content">
+		<div class="container">
+			<h1>Formulaire de modification des informations des utilisateurs</h1>
 
-		{% for message in app.flashes('warning') %}
-			<div class="form-error">
-				{{ message }}
+			{% for message in app.flashes('warning') %}
+				<div class="form-error">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			{{ form(form) }}
 			</div>
-		{% endfor %}
-
-		{{ form(form) }}
-		</div>
+		</main>
 	{% endblock %}

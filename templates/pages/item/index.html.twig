@@ -1,66 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Csp_Book - Mes items{% endblock %}
+{% block title %}Csp_Book - Mes items
+{% endblock %}
 
 {% block body %}
-    <div class="my-items">
-        <h1 class="page-title">Mes items</h1>
+	<main class="content">
+		<div class="my-items">
+			<h1 class="page-title">Mes items</h1>
 
-        {% for flashMessage in app.session.flashbag.get('success') %}
-            <div class="flash-success">
-                {{ flashMessage }}
-            </div>
-        {% endfor %}
-        {% if not items.items is empty %}
-            <div class="item-count">
-                <p>
-                    Il y a
-                    {{ items.getTotalItemCount }}
-                    items
-                </p>
-            </div>
-            <a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
-            <table class="item-table">
-                <thead>
-                    <tr>
-                        <th>Numéro</th>
-                        <th>Image</th>
-                        <th>Nom</th>
-                        <th>Prix</th>
-                        <th>Date de création</th>
-                        <th>Edition</th>
-                        <th>Suppression</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in items %}
-                        <tr>
-                            <td>{{ item.id }}</td>
-                            <td><img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="item-image"></td>
-                            <td>{{ item.name }}</td>
-                            <td>
-                                <div class="item-price-container">
-                                    <span class="item-price">{{ item.price }}</span>
-                                    <img src="{{ asset('images/gold.png') }}" alt="{{ item.name }}" class="gold-image">
-                                </div>
-                            </td>
-                            <td>{{ item.createdAt|date('d/m/Y') }}</td>
-                            <td>
-                                <a href="{{ path('item.edit', { id : item.id }) }}" class="edit-button" id"testedit">Modifier</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('item.delete', { id : item.id }) }}" class="delete-button" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="navigation">
-                {{ knp_pagination_render(items) }}
-            </div>
-        {% else %}
-            <p>Il n'y a pas d'items</p>
-            <a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
-        {% endif %}
-    </div>
+			{% for flashMessage in app.session.flashbag.get('success') %}
+				<div class="flash-success">
+					{{ flashMessage }}
+				</div>
+			{% endfor %}
+			{% if not items.items is empty %}
+				<div class="item-count">
+					<p>
+						Il y a
+						{{ items.getTotalItemCount }}
+						items
+					</p>
+				</div>
+				<a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
+				<table class="item-table">
+					<thead>
+						<tr>
+							<th>Numéro</th>
+							<th>Image</th>
+							<th>Nom</th>
+							<th>Prix</th>
+							<th>Date de création</th>
+							<th>Edition</th>
+							<th>Suppression</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in items %}
+							<tr>
+								<td>{{ item.id }}</td>
+								<td><img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="item-image"></td>
+								<td>{{ item.name }}</td>
+								<td>
+									<div class="item-price-container">
+										<span class="item-price">{{ item.price }}</span>
+										<img src="{{ asset('images/gold.png') }}" alt="{{ item.name }}" class="gold-image">
+									</div>
+								</td>
+								<td>{{ item.createdAt|date('d/m/Y') }}</td>
+								<td>
+									<a href="{{ path('item.edit', { id : item.id }) }}" class="edit-button" id"testedit">Modifier</a>
+								</td>
+								<td>
+									<a href="{{ path('item.delete', { id : item.id }) }}" class="delete-button" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<div class="navigation">
+					{{ knp_pagination_render(items) }}
+				</div>
+			{% else %}
+				<p>Il n'y a pas d'items</p>
+				<a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
+			{% endif %}
+		</div>
+	</main>
 {% endblock %}

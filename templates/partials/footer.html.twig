@@ -1,19 +1,32 @@
-<head>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-
 <footer>
-    <div class="footer">
-      <div class="footer-links">
-        <ul>
-        <li><a href="{{ path('home.index') }}">Accueil</a></li>
-        <li><a href="{{ path('build.index_public') }}">Panoplies de la communauté</a></li>
-        <li><a href="{{ path('item.index') }}">Mes items</a></li>
-        <li><a href="{{ path('build.index') }}">Mes panoplies</a></li>
-        </ul>
-      </div>
-      <div class="footer-info">
-        <p>© {{ "now"|date("Y") }} Nom de ton entreprise. Tous droits réservés.</p>
-      </div>
-    </div>
-  </footer>
+	<div class="footerContainer">
+		<div class="socialIcons">
+			<a href=""><img src="images/github.svg"></a>
+			<a href=""><img src="images/linkedin.svg"></a>
+			<a href=""><img src="images/twitch.svg"></a>
+			<a href=""><img src="images/instagram.svg"></a>
+			<a href=""><img src="images/youtube.svg"></a>
+		</div>
+		<div class="footerNav">
+			<ul>
+				<li>
+					<a href="{{ path('home.index') }}">Accueil</a>
+				</li>
+				<li>
+					<a href="{{ path('build.public') }}">Panoplies de la communauté</a>
+				</li>
+				<li>
+					<a href="{{ path('item.index') }}">Mes items</a>
+				</li>
+			</li>
+			<li>
+				<a href="{{ path('build.index') }}">Mes panoplies</a>
+			</li>
+		</ul>
+	</div>
+	<div class="footerBottom">
+		<p>Copyright &copy;2023; Designed by
+			<span class="designer">Samuel Méline</span>
+		</p>
+	</div>
+</footer>

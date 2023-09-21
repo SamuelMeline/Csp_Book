@@ -62,6 +62,7 @@ class ItemController extends AbstractController
                     'image' => $item->getImage(),
                     'name' => $item->getName(),
                     'price' => $item->getPrice(),
+                    'date de création' => $item->getCreatedAt()->format('d/m/Y'),
                     // Ajoutez d'autres données de panoplie ici selon vos besoins
                 ];
             }

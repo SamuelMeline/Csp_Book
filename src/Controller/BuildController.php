@@ -53,7 +53,7 @@ class BuildController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    #[Route('/panoplie/publique', name: 'build.index_public', methods: ['GET'])]
+    #[Route('/publique', name: 'build.public', methods: ['GET'])]
     public function indexPublic(BuildRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $builds = $paginator->paginate(
@@ -62,7 +62,7 @@ class BuildController extends AbstractController
             5
         );
 
-        return $this->render('pages/build/index_public.html.twig', [
+        return $this->render('pages/build/public.html.twig', [
             'builds' => $builds
         ]);
     }
