@@ -32,7 +32,7 @@ class ItemController extends AbstractController
         $items = $paginator->paginate(
             $repository->findBy(['user' => $this->getUser()]),
             $request->query->getInt('page', 1),
-            6
+            50
         );
 
         return $this->render('pages/item/index.html.twig', [

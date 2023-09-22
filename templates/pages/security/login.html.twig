@@ -5,31 +5,33 @@
 
 {% block body %}
 	<main class="content">
-		<div class="container">
-			<h1>Formulaire de connexion</h1>
-
-			{% for flashMessage in app.session.flashbag.get('success') %}
-				<div class="flash-success">
-					{{ flashMessage }}
-				</div>
-			{% endfor %}
-
-			{% if error %}
-				<div class="form-error">
-					{{ error.messageKey|trans(error.messageData, 'security') }}
-				</div>
-			{% endif %}
-
+		<div class="wrapper">
 			<form action="{{ path('security.login') }}" method="post">
-				<div class="form-group">
-					<label for="username">Adresse email</label>
-					<input type="email" id="username" name="_username" class="form-control" placeholder="exemple@gmail.com" value="{{ last_username }}">
+				<h1>Se connecter</h1>
+				{% for flashMessage in app.session.flashbag.get('success') %}
+					<div class="flash-success">
+						{{ flashMessage }}
+					</div>
+				{% endfor %}
+
+				{% if error %}
+					<div class="form-error">
+						{{ error.messageKey|trans(error.messageData, 'security') }}
+					</div>
+				{% endif %}
+				<div class="inputBox">
+					<input type="email" id="username" name="_username" placeholder="Adresse email" required value="{{ last_username }}">
+					<img src="/images/user.png" alt="userLogin">
 				</div>
-				<div class="form-group">
-					<label for="password">Mot de passe</label>
-					<input type="password" id="password" name="_password" class="form-control" placeholder="*********">
+				<div class="inputBox">
+					<input type="password" id="password" name="_password" placeholder="Mot de passe" required>
+					<img src="/images/lock.png" alt="userPassword">
 				</div>
-				<button type="submit" class="btn btn-success">Se connecter</button>
+				<button type="submit" class="btn">Se connecter</button>
+
+				<div class="registerLink">
+					<a href="{{ path('security.registration') }}">Pas encore inscrit ?</a>
+				</div>
 			</form>
 		</div>
 	</main>

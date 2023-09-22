@@ -31,6 +31,9 @@ class ItemType extends AbstractType
                             'image/jpeg',
                             'image/png',
                             'image/gif',
+                            'image/jpg',
+                            'image/webp',
+                            'image/svg+xml'
                         ],
                         'mimeTypesMessage' => 'Le format de l\'image n\'est pas valide. Les formats acceptés sont : JPG, PNG et GIF.',
                     ]),

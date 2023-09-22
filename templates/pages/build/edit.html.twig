@@ -1,27 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<main class="content">
-	<div class="edit-items">
-		<h1 class="page-title">Modification de la panoplie</h1>
-		{{ form_start(form) }}
+	<main class="content">
+		<div class="wrapper">
+			<h1 class="page-title">Modification de la panoplie</h1>
+			{{ form_start(form) }}
 
-		<div class="form-group">
-			{{ form_label(form.name) }}
-			{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
-			<div class="form-error">
-				{{ form_errors(form.name) }}
-			</div>
-		</div>
-
-		<div class="form-group">
-			{{ form_label(form.difficulty) }}
-			{{ form_widget(form.difficulty, {'attr': {'class': 'difficulty-input'}}) }}
-			<div class="form-error">
-				{{ form_errors(form.difficulty) }}
+			<div class="form-group inputBox">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
+				<div class="form-error">
+					{{ form_errors(form.name) }}
+				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group inputBox">
 				{{ form_label(form.price) }}
 				{{ form_widget(form.price, {'attr': {'class': 'price-input'}}) }}
 				<div class="form-error">
@@ -29,7 +22,7 @@
 				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group inputPublic">
 				{{ form_label(form.isPublic) }}
 				{{ form_widget(form.isPublic, {'attr': {'class': 'isPublic-input'}}) }}
 				<div class="form-error">
@@ -37,19 +30,13 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-				{{ form_label(form.items) }}
-				{{ form_widget(form.items, {'attr': {'class': 'items-input'}}) }}
-				<div class="form-error">
-					{{ form_errors(form.items) }}
-				</div>
+			{{ form_label(form.items) }}
+			{{ form_widget(form.items, {'attr': {'class': 'items-input'}}) }}
+			<div class="form-error">
+				{{ form_errors(form.items) }}
 			</div>
-
-			<button type="submit" class="btn-form-edit">Modifier ma panoplie</button>
-
+			<button type="submit" class="btn">Modifier ma panoplie</button>
 		</div>
-
 		{{ form_end(form) }}
 	</div>
-</main>
-{% endblock %}
+</main>{% endblock %}

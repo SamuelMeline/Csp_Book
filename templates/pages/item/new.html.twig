@@ -6,36 +6,35 @@
 
 {% block body %}
 	<main class="content">
-		<div class="new-items">
+		<div class="wrapper">
 			<h1 class="page-title">Création d'un item</h1>
 
 			{{ form_start(form) }}
 
-			<div class="form-group-images">
-				{{ form_label(form.image) }}
-				{{ form_widget(form.image, {'attr': {'class': 'image-input'}}) }}
-				<div class="form-error">
-					{{ form_errors(form.image) }}
+			<div class="form-group inputBox">
+					{{ form_widget(form.image, {'attr': {'class': 'image-input chooseImage', 'placeholder': 'Image'}}) }}
+					<div class="form-error">
+						{{ form_errors(form.image) }}
+					</div>
 				</div>
-			</div>
 
-			<div class="form-group">
+			<div class="form-group inputBox">
 				{{ form_label(form.name) }}
-				{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
+				{{ form_widget(form.name, {'attr': {'class': 'name-input', 'placeholder': 'Nom'}}) }}
 				<div class="form-error">
 					{{ form_errors(form.name) }}
 				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group inputBox">
 				{{ form_label(form.price) }}
-				{{ form_widget(form.price, {'attr': {'class': 'price-input'}}) }}
+				{{ form_widget(form.price, {'attr': {'class': 'price-input', 'placeholder': 'Prix'}}) }}
 				<div class="form-error">
 					{{ form_errors(form.price) }}
 				</div>
 			</div>
 
-			<button type="submit" class="btn-form-new">Créer mon item</button>
+			<button type="submit" class="btn">Créer mon item</button>
 
 		</div>
 		{{ form_end(form) }}

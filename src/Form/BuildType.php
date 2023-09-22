@@ -51,21 +51,6 @@ class BuildType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
-            ->add('difficulty', RangeType::class, [
-                'attr' => [
-                    'class' => 'form-range',
-                    'min' => 1,
-                    'max' => 5,
-                ],
-                'label' => 'Difficulté',
-                'label_attr' => [
-                    'class' => 'form-label'
-                ],
-                'constraints' => [
-                    new Assert\PositiveOrZero(),
-                    new Assert\NotBlank()
-                ]
-            ])
             ->add('price', NumberType::class, [
                 'attr' => [
                     'class' => 'form-control',
@@ -82,9 +67,9 @@ class BuildType extends AbstractType
                 'attr' => [
                     'class' => 'form-check-input',
                 ],
-                'label' => 'Publique',
+                'label' => 'Cocher pour partager en public',
                 'label_attr' => [
-                    'class' => 'form-check-label'
+                    'class' => 'form-check-label labelPublic'
                 ],
                 'required' => false,
             ])
@@ -97,7 +82,7 @@ class BuildType extends AbstractType
                         ->setParameter('user', $this->token->getToken()->getUser());
                 },
                 'multiple' => true,  // Permet de sélectionner plusieurs items
-                'expanded' => true,  // Affiche les items sous forme de cases à cocher
+                'expanded' => true,  // Affiche les items sous forme de liste déroulante
                 'choice_label' => 'name',  // Propriété de l'entité Item à afficher dans le select
             ]);
         }

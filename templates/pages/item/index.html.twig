@@ -4,29 +4,36 @@
 {% endblock %}
 
 {% block body %}
-	<main class="content">
-		<div class="my-items">
-			<h1 class="page-title">Mes items</h1>
-
+	<main class="table">
+		<section class="tableHeader">
+			<h1 class="tableTitle">Mes items</h1>
 			{% for flashMessage in app.session.flashbag.get('success') %}
 				<div class="flash-success">
 					{{ flashMessage }}
 				</div>
 			{% endfor %}
-			{% if not items.items is empty %}
-				<div class="item-count">
+		</section>
+		<section class="tableBody">
+			<div class="lengthBuild">
+				{% if not items.items is empty %}
 					<p>
-						Il y a
-						{{ items.getTotalItemCount }}
-						items
+						{% if items.getTotalItemCount > 1 %}
+							Il y a
+							{{ items.getTotalItemCount }}
+							items
+						{% else %}
+							Il y a
+							{{ items.getTotalItemCount }}
+							item
+						{% endif %}
 					</p>
 				</div>
 				<a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
-				<table class="item-table">
+				<table>
 					<thead>
 						<tr>
 							<th>Numéro</th>
-							<th>Image</th>
+							<th>Items</th>
 							<th>Nom</th>
 							<th>Prix</th>
 							<th>Date de création</th>
@@ -57,13 +64,18 @@
 						{% endfor %}
 					</tbody>
 				</table>
-				<div class="navigation">
-					{{ knp_pagination_render(items) }}
-				</div>
 			{% else %}
 				<p>Il n'y a pas d'items</p>
-				<a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
+				<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
 			{% endif %}
+		</section>
+		<!-- Fenêtre modale -->
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+				<button id="modal-confirm">Confirmer</button>
+				<button id="modal-cancel">Annuler</button>
+			</div>
 		</div>
 	</main>
 {% endblock %}

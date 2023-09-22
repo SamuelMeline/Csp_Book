@@ -5,11 +5,12 @@
 
 {% block body %}
 	<main class="content">
-		<div class="container">
-			<h1>Formulaire d'inscription</h1>
-
+		<div class="wrapper">
+			<h1>S'inscrire</h1>
 			{{ form(form) }}
+				<div class="registerLink">
+					<a href="{{ path('security.login') }}">Déjà inscrit ?</a>
+				</div>
 			</div>
 		</main>
-		
 	{% endblock %}

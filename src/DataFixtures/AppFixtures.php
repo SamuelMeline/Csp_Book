@@ -70,7 +70,6 @@ class AppFixtures extends Fixture
         for ($j = 1; $j < 10; $j++) {
             $build = new Build();
             $build->setName('Build ' . $j);
-            $build->setDifficulty(mt_rand(1, 5));
             $build->setPrice(mt_rand(10000, 40000));
             $build->setIsPublic(mt_rand(0, 1) == 1 ? true : false);
             $build->setUser($users[mt_rand(0, count($users) - 1)]);

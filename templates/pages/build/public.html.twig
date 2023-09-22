@@ -4,32 +4,49 @@
 {% endblock %}
 
 {% block body %}
-	<main class="content">
-		<div class="my-items">
-			<h1 class="page-title">Panoplies de la communauté</h1>
-
+	<main class="table">
+		<section class="tableHeader">
+			<h1 class="tableTitle">Panoplies de la communauté</h1>
 			{% for flashMessage in app.session.flashbag.get('success') %}
 				<div class="flash-success">
 					{{ flashMessage }}
 				</div>
 			{% endfor %}
-			<div class="item-count">
-				<p>
-					Il y a
-					{{ builds|length }}
-					panoplies
-				</p>
+		</section>
+		<section class="tableBody">
+			<div class="lengthBuild">
+			<p>
+				{% if builds|length > 1 %}
+					Il y a {{ builds|length }} panoplies
+				{% else %}
+					Il y a {{ builds|length }} panoplie
+				{% endif %}
+			</p>
 			</div>
-			<table class="item-table">
+			<table>
 				<thead>
 					<tr>
-						<th>Numéro</th>
-						<th>Nom</th>
-						<th>Items</th>
-						<th>Note</th>
-						<th>Prix</th>
-						<th>Difficulté</th>
-						<th>Date de création</th>
+						<th>
+							Numéro
+						</th>
+						<th>
+							Nom
+						</th>
+						<th>
+							Items
+						</th>
+						<th>
+							Note
+						</th>
+						<th>
+							Prix
+						</th>
+						<th>
+							Difficulté
+						</th>
+						<th>
+							Date de création
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -80,15 +97,12 @@
 					{% endif %}
 				</tbody>
 			</table>
-			<div class="navigation">
-				{{ knp_pagination_render(builds) }}
-			</div>
-			<div>
-				<form action="{{ path('search.items') }}" class="search-item" method="GET">
-					<input type="text" name="item" id="search-item" placeholder="Rechercher un item">
-				</form>
-			</div>
-			<div id="search-results-items"></div>
+		</section>
+		<div>
+			<form action="{{ path('search.items') }}" class="search-item" method="GET">
+				<input type="text" name="item" id="search-item" placeholder="Rechercher un item">
+			</form>
 		</div>
+		<div id="search-results-items"></div>
 	</main>
 {% endblock %}
