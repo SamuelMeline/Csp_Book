@@ -31,58 +31,70 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $("#search-item").on("input", function () {
-        var item = $(this).val();
+	$("#search-item").on("input", function () {
+		var item = $(this).val();
 
-        // Vérifiez si l'input item est vide
-        if (item.trim() !== "") {
-            $.ajax({
-                type: "GET",
-                url: "/search-items",
-                data: { item: item },
-                success: function (data) {
-                    $("#search-results-items").html(""); // Effacez le contenu précédent
+		// Vérifiez si l'input item est vide
+		if (item.trim() !== "") {
+			$.ajax({
+				type: "GET",
+				url: "/search-items",
+				data: { item: item },
+				success: function (data) {
+					$("#search-results-items").html(""); // Effacez le contenu précédent
 
-                    if (data.length > 0) {
-                        var tableDiv = $("<table>").addClass("searchTable"); // Utilisez la classe searchTable
-                        var tableHead = $("<thead>");
-                        var tableBody = $("<tbody>");
+					if (data.length > 0) {
+						var tableDiv = $("<table>").addClass("searchTable"); // Utilisez la classe searchTable
+						var tableHead = $("<thead>");
+						var tableBody = $("<tbody>");
 
-                        // Créez la ligne d'en-tête avec 3 colonnes
-                        var tableHeadRow = $("<tr>");
-                        tableHeadRow.append(
-                            $("<th>").text("Items"),
-                            $("<th>").text("Nom"),
-                            $("<th>").text("Prix")
-                        );
-                        tableHead.append(tableHeadRow);
+						// Créez la ligne d'en-tête avec 3 colonnes
+						var tableHeadRow = $("<tr>");
+						tableHeadRow.append(
+							$("<th>").text("Items"),
+							$("<th>").text("Nom"),
+							$("<th>").text("Prix")
+						);
+						tableHead.append(tableHeadRow);
 
-                        // Créez les lignes de données avec 3 colonnes
-                        $.each(data, function (index, item) {
-                            var tableDataRow = $("<tr>");
-                            tableDataRow.append(
-                                $("<td>").html(
-                                    "<img src='/images/" +
-                                        item.image +
-                                        "' alt='item image' class='item-image'>"
-                                ),
-                                $("<td>").text(item.name),
-                                $("<td>").html(item.price + ' <img src="/images/gold.png" alt="Or" class="gold-image">')
-							);
-                            tableBody.append(tableDataRow);
-                        });
+						// Créez un objet pour stocker les éléments déjà affichés
+						var itemsAffiches = {};
 
-                        tableDiv.append(tableHead, tableBody);
-                        $("#search-results-items").append(tableDiv);
-                    } else {
-                        $("#search-results-items").html(
-                            "<div>Aucun item trouvé</div>"
-                        );
-                    }
-                },
-            });
-        } else {
-            $("#search-results-items").html(""); // Effacez le contenu s'il n'y a pas de texte de recherche
-        }
-    });
+						// Parcourez les données et ajoutez les éléments au tableau
+						$.each(data, function (index, item) {
+							// Vérifiez si le nom de l'élément n'est pas déjà dans itemsAffiches
+							if (!itemsAffiches[item.name]) {
+								var tableDataRow = $("<tr>");
+								tableDataRow.append(
+									$("<td>").html(
+										"<img src='/images/items/" +
+											item.image +
+											"' alt='item image' class='item-image'>"
+									),
+									$("<td>").text(item.name),
+									$("<td>").html(
+										item.price +
+											' <img src="/images/gold.png" alt="Or" class="gold-image">'
+									)
+								);
+								tableBody.append(tableDataRow);
+
+								// Marquez l'élément comme déjà affiché
+								itemsAffiches[item.name] = true;
+							}
+						});
+
+						tableDiv.append(tableHead, tableBody);
+						$("#search-results-items").append(tableDiv);
+					} else {
+						$("#search-results-items").html(
+							"<div>Aucun item trouvé</div>"
+						);
+					}
+				},
+			});
+		} else {
+			$("#search-results-items").html(""); // Effacez le contenu s'il n'y a pas de texte de recherche
+		}
+	});
 });

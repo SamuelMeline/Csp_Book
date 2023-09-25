@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const deleteButtons = document.querySelectorAll(".delete-button");
+    const deleteButtons = document.querySelectorAll(".deleteBtn");
     const modal = document.getElementById("myModal");
     const modalConfirm = document.getElementById("modal-confirm");
     const modalCancel = document.getElementById("modal-cancel");
@@ -20,11 +20,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 modal.style.display = "none";
             });
         });
-    });
-});
-
-$(document).ready(function() {
-    $("#menu-icon").click(function() {
-        $("#menu-dropdown").toggle();
     });
 });

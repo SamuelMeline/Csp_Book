@@ -49,7 +49,7 @@
 						<div class="form-check">
 							<label class="form-check-label">
 								<input type="checkbox" name="{{ form.items.vars.full_name }}[]" value="{{ itemId }}" class="form-check-input">
-								<img src="{{ asset('images/' ~ item.data.image) }}" alt="{{ item.label }}" class="item-image">
+								<img src="{{ asset('images/items/' ~ item.data.image) }}" alt="{{ item.label }}" class="item-image">
 							</label>
 						</div>
 						{% if loop.index is divisible by(10) %}

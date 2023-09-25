@@ -20,7 +20,7 @@ class UserPasswordType extends AbstractType
                 'first_options' => [
                     'attr' => [
                         'class' => 'form-control',
-                        'minlength' => '2',
+                        'minlength' => '6',
                         'maxlength' => '50'
                     ],
                     'label' => 'Mot de passe',
@@ -31,7 +31,7 @@ class UserPasswordType extends AbstractType
                 'second_options' => [
                     'attr' => [
                         'class' => 'form-control',
-                        'minlength' => '2',
+                        'minlength' => '6',
                         'maxlength' => '50'
                     ],
                     'label' => 'Confirmation du mot de passe',
@@ -44,7 +44,7 @@ class UserPasswordType extends AbstractType
             ->add('newPassword', PasswordType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'minlength' => '2',
+                    'minlength' => '6',
                     'maxlength' => '50'
                 ],
                 'label' => 'Nouveau mot de passe',
@@ -52,13 +52,6 @@ class UserPasswordType extends AbstractType
                     'class' => 'form-label'
                 ],
                 'constraints' => [new Assert\NotBlank()]
-            ])
-
-            ->add('submit', SubmitType::class, [
-                'label' => 'Changer mon mot de passe',
-                'attr' => [
-                    'class' => 'btn btn-primary btn-block'
-                ]
             ]);
     }
 }

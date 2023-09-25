@@ -69,12 +69,6 @@ class UserType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label'
                 ],
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Modifier mes informations',
-                'attr' => [
-                    'class' => 'btn btn-primary btn-block'
-                ]
             ]);
     }
 

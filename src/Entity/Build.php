@@ -22,7 +22,6 @@ class Build
 
     #[ORM\ManyToMany(targetEntity: Item::class)]
     #[Assert\Count(min: 5)]
-    #[Assert\Count(max: 5)]
     private Collection $items;
 
     #[ORM\Column(length: 50)]

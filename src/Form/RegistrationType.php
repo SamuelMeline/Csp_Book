@@ -27,7 +27,6 @@ class RegistrationType extends AbstractType
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
-                // ...
             ])
             ->add('pseudo', TextType::class, [
                 'attr' => [
@@ -36,16 +35,14 @@ class RegistrationType extends AbstractType
                     'minlength' => '2',
                     'maxlength' => '50',
                 ],
-                // ...
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
                     'class' => 'form-control inputBox',
                     'placeholder' => 'Adresse email',
-                    'minlength' => '2',
+                    'minlength' => '5',
                     'maxlength' => '180',
                 ],
-                // ...
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -53,26 +50,17 @@ class RegistrationType extends AbstractType
                     'attr' => [
                         'class' => 'form-control inputBox',
                         'placeholder' => 'Mot de passe',
-                        'minlength' => '2',
+                        'minlength' => '6',
                         'maxlength' => '50',
                     ],
-                    // ...
                 ],
                 'second_options' => [
                     'attr' => [
                         'class' => 'form-control inputBox',
                         'placeholder' => 'Confirmation du mot de passe',
-                        'minlength' => '2',
+                        'minlength' => '6',
                         'maxlength' => '50',
                     ],
-                    // ...
-                ],
-                // ...
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'S\'inscrire',
-                'attr' => [
-                    'class' => 'btn',
                 ],
             ]);
     }

@@ -1,6 +1,6 @@
 <header>
 	<nav>
-		<a href="{{ path('home.index') }}"><img src="/images/logo.png" class="logo" alt="logo"></a>
+		<a href="{{ path('home.index') }}"><img src="/images/icons/logo.png" class="logo" alt="logo"></a>
 		<ul>
 			<li>
 				<a href="{{ path('home.index') }}">Accueil</a>
@@ -27,8 +27,8 @@
 					<a class="dropdown-item" href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
 					<div class="dropdawn-divider"></div>
 					{% if 'ROLE_ADMIN' in app.user.roles %}
-						<a class="dropdown-item" href="{{ path('admin.index') }}">Administration</a>
 						<a class="dropdown-item" href="{{ path('search_form') }}">Recherche d'utilisateur</a>
+						<a class="dropdown-item" href="{{ path('admin.index') }}">Administration</a>
 						<div class="dropdawn-divider"></div>
 					{% endif %}
 					<a class="dropdown-item" href="{{ path('security.logout') }}">Déconnexion</a>
@@ -46,4 +46,3 @@
 	</nav>
 </header>
 <div class="overlay"></div>
-

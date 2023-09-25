@@ -28,7 +28,7 @@
 						{% endif %}
 					</p>
 				</div>
-				<a href="{{ path('item.new') }}" class="create-item-btn">Créer un item</a>
+				<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
 				<table>
 					<thead>
 						<tr>
@@ -45,7 +45,7 @@
 						{% for item in items %}
 							<tr>
 								<td>{{ item.id }}</td>
-								<td><img src="{{ asset('images/' ~ item.image) }}" alt="Item Image" class="item-image"></td>
+								<td><img src="{{ asset('images/items/' ~ item.image) }}" alt="Item Image" class="item-image"></td>
 								<td>{{ item.name }}</td>
 								<td>
 									<div class="item-price-container">
@@ -55,10 +55,10 @@
 								</td>
 								<td>{{ item.createdAt|date('d/m/Y') }}</td>
 								<td>
-									<a href="{{ path('item.edit', { id : item.id }) }}" class="edit-button" id"testedit">Modifier</a>
+									<a href="{{ path('item.edit', { id : item.id }) }}" class="editBtn">Modifier</a>
 								</td>
 								<td>
-									<a href="{{ path('item.delete', { id : item.id }) }}" class="delete-button" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>
+									<a href="{{ path('item.delete', { id : item.id }) }}" class="deleteBtn" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>
 								</td>
 							</tr>
 						{% endfor %}

@@ -24,7 +24,7 @@
 					{% endif %}
 				</p>
 			</div>
-			<a href="{{ path('build.new') }}" class="create-item-btn">Créer une panoplie</a>
+			<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
 			<table>
 				<thead>
 					<tr>
@@ -47,7 +47,7 @@
 								{# Récupérer l'image de l'item ajouté #}
 								{% for item in build.items %}
 									{% if item.image is not null %}
-										<img src="{{ asset('images/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
+										<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
 									{% endif %}
 								{% endfor %}
 							</td>
@@ -70,10 +70,10 @@
 							</td>
 							<td>{{ build.createdAt|date('d/m/Y') }}</td>
 							<td>
-								<a href="{{ path('build.edit', { id : build.id }) }}" class="edit-button">Modifier</a>
+								<a href="{{ path('build.edit', { id : build.id }) }}" class="editBtn">Modifier</a>
 							</td>
 							<td>
-								<a href="{{ path('build.delete', { id : build.id }) }}" class="delete-button" data-url="{{ path('build.delete', {id: build.id}) }}">Supprimer</a>
+								<a href="{{ path('build.delete', { id : build.id }) }}" class="deleteBtn" data-url="{{ path('build.delete', {id: build.id}) }}">Supprimer</a>
 							</td>
 						</tr>
 					{% endfor %}

@@ -49,13 +49,13 @@ class AppFixtures extends Fixture
         }
 
         // Obtenir les noms des images du repertoire public/images
-        $images = scandir('public/images');
+        $images = scandir('public/images/items');
 
         // Items
         $items = [];
         for ($i = 1; $i < 31; $i++) {
             $item = new Item();
-            // Ajouter des images aléatoire de mon repertoire public/images
+            // Ajouter des images aléatoire de mon repertoire public/images/items
             $item->setImage($images[mt_rand(2, count($images) - 1)]);
             $item->setName('Item ' . $i);
             $item->setPrice(mt_rand(1000, 4000));
