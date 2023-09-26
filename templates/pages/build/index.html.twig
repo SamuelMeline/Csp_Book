@@ -32,7 +32,6 @@
 						<th>Nom</th>
 						<th>Items</th>
 						<th>Prix</th>
-						<th>Difficulté</th>
 						<th>Date de création</th>
 						<th>Edition</th>
 						<th>Suppression</th>
@@ -59,13 +58,6 @@
 										<span class="build-price">{{ build.price }}</span>
 										<img src="{{ asset('images/gold.png') }}" alt="{{ build.name }}" class="gold-image">
 									</div>
-								{% endif %}
-							</td>
-							<td>
-								{% if build.difficulty is null %}
-									Non renseigné
-								{% else %}
-									{{ build.difficulty }}
 								{% endif %}
 							</td>
 							<td>{{ build.createdAt|date('d/m/Y') }}</td>

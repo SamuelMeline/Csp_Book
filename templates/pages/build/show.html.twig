@@ -7,42 +7,51 @@
 
 {% block body %}
 	<main class="content">
-		<div class="container">
+		<div class="wrapper">
 			{% for flashMessage in app.session.flashbag.get('success') %}
 				<div class="flash-success">
 					{{ flashMessage }}
 				</div>
 			{% endfor %}
 
-			<h1>
-				{{ build.name }}
-			</h1>
+			<h1 class="page-title">{{ build.name }}</h1>
 
-			<p>La note de cette panoplie est de
-				{{ build.average|number_format(2, ',', ' ') }}
-				/ 5
-			</p>
+			<div class="form-group inputShow">
+				<p>La note de cette panoplie est de
+					{{ build.average|number_format(2, ',', ' ') }}/ 5</p>
+			</div>
 
-			<span>Crée le :
-				{{ build.createdAt|date('d/m/Y') }}</span>
-			<p>
-				Difficulté :
-				{{ build.difficulty }}
-			</p>
-			<p>
-				Prix :
-				{{ build.price }}
-			</p>
-			<div>
+			<div class="form-group inputShow">
+				<p>Crée le :
+					{{ build.createdAt|date('d/m/Y') }}</p>
+			</div>
+
+			<div class="form-group inputShow">
+				<p>Prix :
+					{{ build.price }}</p>
+			</div>
+
+			<div class="form-group">
 				<p>Items</p>
-				{% for item in build.items %}
-					{{ item.name }}
-				{% endfor %}
+				<div class="item-images">
+					{% for item in build.items %}
+						{% if item.image is not null %}
+							<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
+						{% endif %}
+					{% endfor %}
+				</div>
 			</div>
 
 			<div class="mark">
-				{{ form(form) }}
-				</div>
+				{{ form_start(form) }}
+				<p>
+					Notez cette panoplie :
+				</p>
+				{{ form_widget(form.mark, {'attr': {'class': 'mark-input'}}) }}
+				{{ form_errors(form.mark) }}
+				<button type="submit" class="btn">Noter la panoplie</button>
+				{{ form_end(form) }}
 			</div>
-		</main>
-	{% endblock %}
+		</div>
+	</main>
+{% endblock %}

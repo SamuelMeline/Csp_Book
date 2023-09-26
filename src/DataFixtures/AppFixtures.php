@@ -48,16 +48,25 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-        // Obtenir les noms des images du repertoire public/images
+        // Obtenir les noms des images du répertoire public/images
         $images = scandir('public/images/items');
 
         // Items
         $items = [];
+
         for ($i = 1; $i < 31; $i++) {
             $item = new Item();
-            // Ajouter des images aléatoire de mon repertoire public/images/items
-            $item->setImage($images[mt_rand(2, count($images) - 1)]);
-            $item->setName('Item ' . $i);
+
+            // Sélectionnez une image aléatoire qui n'existe pas déjà dans la base de données
+            do {
+                $randomImage = $images[mt_rand(2, count($images) - 1)];
+            } while (in_array($randomImage, $items));
+
+            // Obtenez le nom de l'item à partir du nom du fichier image
+            $itemName = pathinfo($randomImage, PATHINFO_FILENAME);
+
+            $item->setImage($randomImage);
+            $item->setName($itemName); // Utilisez le nom de l'item à partir du nom du fichier image
             $item->setPrice(mt_rand(1000, 4000));
             $item->setUser($users[mt_rand(0, count($users) - 1)]);
 

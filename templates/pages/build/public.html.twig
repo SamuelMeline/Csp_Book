@@ -15,13 +15,17 @@
 		</section>
 		<section class="tableBody">
 			<div class="lengthBuild">
-			<p>
-				{% if builds|length > 1 %}
-					Il y a {{ builds|length }} panoplies
-				{% else %}
-					Il y a {{ builds|length }} panoplie
-				{% endif %}
-			</p>
+				<p>
+					{% if builds|length > 1 %}
+						Il y a
+						{{ builds|length }}
+						panoplies
+					{% else %}
+						Il y a
+						{{ builds|length }}
+						panoplie
+					{% endif %}
+				</p>
 			</div>
 			<table>
 				<thead>
@@ -38,6 +42,9 @@
 						<th>
 							Note
 						</th>
+						{# <th>
+													Noter la panoplie
+												</th> #}
 						<th>
 							Prix
 						</th>
@@ -64,9 +71,13 @@
 									{% if build.average is null %}
 										Non renseigné
 									{% else %}
-										<span class="build-average">{{ build.average|number_format(2, ',', ' ') }}/ 5</span>
+										<span class="buildAverage">{{ build.average|number_format(2, ',', ' ') }}/ 5</span>
+										<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
 									{% endif %}
 								</td>
+								{# <td>
+																	<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
+																</td> #}
 								<td>
 									{% if build.price is null %}
 										Non renseigné

@@ -8,7 +8,7 @@
 
 			<div class="form-group inputBox">
 				{{ form_label(form.name) }}
-				{{ form_widget(form.name, {'attr': {'class': 'name-input'}}) }}
+				{{ form_widget(form.name, {'attr': {'class': 'name-input', 'placeholder' : 'Nom de la panoplie'}}) }}
 				<div class="form-error">
 					{{ form_errors(form.name) }}
 				</div>
@@ -16,7 +16,7 @@
 
 			<div class="form-group inputBox">
 				{{ form_label(form.price) }}
-				{{ form_widget(form.price, {'attr': {'class': 'price-input'}}) }}
+				{{ form_widget(form.price, {'attr': {'class': 'price-input', 'placeholder' : 'Prix de la panoplie'}}) }}
 				<div class="form-error">
 					{{ form_errors(form.price) }}
 				</div>

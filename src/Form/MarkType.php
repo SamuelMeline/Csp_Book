@@ -24,19 +24,12 @@ class MarkType extends AbstractType
                     '5' => 5
                 ],
                 'attr' => [
-                    'class' => 'form-select'
+                    'class' => 'mark-select'
                 ],
                 'label_attr' => [
                     'class' => 'form-label'
-                ]
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Noter la panoplie',
-                'attr' => [
-                    'class' => 'btn btn-primary'
-                ]
-            ]) 
-        ;
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
