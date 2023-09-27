@@ -92,8 +92,9 @@ class ItemController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
+            $imageDirectory = $this->getParameter('images_directory') . '/items';
             $newImageName = uniqid() . '.' . $imageFile->getClientOriginalExtension();
-            $imageFile->move($this->getParameter('images_directory'), $newImageName);
+            $imageFile->move($imageDirectory, $newImageName);
 
             $item->setImage($newImageName);
             $item->setUser($this->getUser());
@@ -132,8 +133,9 @@ class ItemController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
+            $imageDirectory = $this->getParameter('images_directory') . '/items';
             $newImageName = uniqid() . '.' . $imageFile->getClientOriginalExtension();
-            $imageFile->move($this->getParameter('images_directory'), $newImageName);
+            $imageFile->move($imageDirectory, $newImageName);
 
             $item->setImage($newImageName);
 
@@ -165,6 +167,10 @@ class ItemController extends AbstractController
         $item = $repository->findOneBy(['id' => $id]);
         $manager->remove($item);
         $manager->flush();
+
+        // Supprimer l'item du dossier public/images/items
+        $imageDirectory = $this->getParameter('images_directory') . '/items';
+        unlink($imageDirectory . '/' . $item->getImage());
 
         $this->addFlash('success', 'L\'item a bien été supprimé !');
 

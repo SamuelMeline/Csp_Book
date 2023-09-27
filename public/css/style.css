@@ -1,3 +1,5 @@
+/* Body */
+
 *,
 *::before,
 *::after {
@@ -809,10 +811,11 @@ footer {
 	margin: 0px 5px;
 }
 
-/* Mobile */
+/* Responsive */
 
 @media screen and (max-width: 1800px) {
-	/* Navbar */
+
+	/* Header */
 
 	nav {
 		justify-content: center;
@@ -896,11 +899,13 @@ footer {
 
 @media screen and (max-width: 960px) {
 
+	/* Body */
+
 	body {
 		font-size: 16px;
 	}
 
-	/* Navbar */
+	/* Header */
 
 	nav {
 		display: inline-block;
@@ -985,13 +990,12 @@ footer {
 }
 
 @media screen and (max-width: 760px) {
+	
 	/* Header */
 
 	header {
 		max-width: 100%;
 	}
-
-	/* Navbar */
 
 	nav ul {
 		margin-bottom: 10px;

@@ -42,9 +42,6 @@
 						<th>
 							Note
 						</th>
-						{# <th>
-													Noter la panoplie
-												</th> #}
 						<th>
 							Prix
 						</th>
@@ -69,15 +66,13 @@
 								</td>
 								<td>
 									{% if build.average is null %}
-										Non renseigné
+										<span class="buildAverage">À noter</span>
+										<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
 									{% else %}
 										<span class="buildAverage">{{ build.average|number_format(2, ',', ' ') }}/ 5</span>
 										<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
 									{% endif %}
 								</td>
-								{# <td>
-																	<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
-																</td> #}
 								<td>
 									{% if build.price is null %}
 										Non renseigné
