@@ -856,6 +856,21 @@ footer {
 	.right p {
 		font-size: 18px;
 	}
+
+	/* Tableau */
+
+	table,
+	th,
+	td {
+		min-width: 180px;
+	}
+
+	/* AGRANDIR SEULEMENT LA 3 EME COLONNE DU TABLEAU */
+
+	.table thead th:nth-child(3),
+	.table thead th:nth-child(4) {
+		min-width: 350px;
+	}
 }
 
 @media screen and (max-width: 1300px) {
@@ -880,6 +895,11 @@ footer {
 }
 
 @media screen and (max-width: 960px) {
+
+	body {
+		font-size: 16px;
+	}
+
 	/* Navbar */
 
 	nav {
@@ -933,6 +953,27 @@ footer {
 	.left p,
 	.right p {
 		font-size: 14px;
+	}
+
+	/* Tableau */
+
+	main.table {
+		width: 100%;
+	}
+
+	.tableTitle {
+		font-size: 30px;
+	}
+
+	.lengthBuild p {
+		font-size: 20px;
+		margin-bottom: 0;
+	}
+
+	/* Formulaire d'inscription / connexion / édition */
+
+	.wrapper {
+		width: 80%;
 	}
 
 	/* Footer */
@@ -1000,46 +1041,6 @@ footer {
 		font-size: 18px;
 	}
 
-	/* Tableau */
-
-	main.table {
-		width: 100%;
-	}
-
-	.tableTitle {
-		font-size: 30px;
-	}
-
-	table,
-	th,
-	td {
-		min-width: 180px;
-	}
-
-	/* AGRANDIR SEULEMENT LA 3 EME COLONNE DU TABLEAU */
-
-	 .table thead th:nth-child(3),
-	 .table thead th:nth-child(4)
-	  {
-		min-width: 350px;
-	}
-
-	/* Supprimer les 3 premieres colonnes du tableau */
-
-	/* .table thead th:nth-child(1),
-	.table thead th:nth-child(2),
-	.table thead th:nth-child(4) {
-		display: none;
-	}
-
-	.tableBody td:nth-child(1),
-	.tableBody td:nth-child(2),
-	.tableBody td:nth-child(4) {
-		display: none;
-	} */
-
-
-
 	/* Formulaire d'inscription / connexion / édition */
 
 	.wrapper {
@@ -1071,5 +1072,125 @@ footer {
 	.footerContainer img {
 		width: 25px;
 		height: 25px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	/* Body */
+
+	body {
+		font-size: 12px;
+		line-height: 1.2rem;
+	}
+
+	/* Header */
+
+	nav .logo {
+		width: 120px;
+	}
+
+	.navbar-nav {
+		top: 15.1%;
+		right: 5%;
+	}
+
+	nav .menu-icon {
+		width: 30px;
+	}
+
+	nav ul li {
+		margin-left: 10px;
+	}
+
+	nav ul li a {
+		font-size: 10px;
+	}
+
+	/* Page d'accueil */
+
+	.title {
+		font-size: 20px;
+		margin-top: 5%;
+		margin-bottom: 0;
+	}
+
+	.left h2,
+	.right h2 {
+		font-size: 18px;
+	}
+
+	.left p,
+	.right p {
+		font-size: 12px;
+	}
+
+	.home-video {
+		margin-left: 45px;
+		font-size: 16px;
+	}
+
+	/* Tableau */
+
+	th,
+	td {
+		font-size: 14px;
+	}
+
+	a.createBtn,
+	a.editBtn,
+	a.deleteBtn {
+		font-size: 14px;
+	}
+
+	.tableTitle {
+		font-size: 25px;
+	}
+
+	.lengthBuild p {
+		font-size: 18px;
+		margin-bottom: 0;
+	}
+
+	img.item-image {
+		width: 40px;
+		height: 40px;
+	}
+
+	/* Formulaire d'inscription / connexion / édition */
+
+	.wrapper h1 {
+		font-size: 20px;
+	}
+
+	.inputBox ::placeholder {
+		font-size: 14px;
+	}
+
+	/* Modal */
+
+	.modal {
+		left: 20%;
+	}
+
+	/* Footer */
+
+	.footerNav ul li a {
+		margin-left: 5px;
+		margin-right: 5px;
+		font-size: 10px;
+	}
+
+	.footerBottom {
+		font-size: 10px;
+	}
+
+	.footerContainer img {
+		width: 20px;
+		height: 20px;
+	}
+
+	.socialIcons a {
+		border-radius: 10px;
 	}
 }
