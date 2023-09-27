@@ -30,11 +30,6 @@ class Build
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\Positive()]
-    #[Assert\LessThanOrEqual(5)]
-    private ?int $difficulty = null;
-
-    #[ORM\Column(nullable: true)]
     #[Assert\PositiveOrZero]
     #[Assert\NotNull()]
     private ?float $price = null;
@@ -111,18 +106,6 @@ class Build
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDifficulty(): ?int
-    {
-        return $this->difficulty;
-    }
-
-    public function setDifficulty(?int $difficulty): static
-    {
-        $this->difficulty = $difficulty;
 
         return $this;
     }

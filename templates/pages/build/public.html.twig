@@ -66,7 +66,7 @@
 								</td>
 								<td>
 									{% if build.average is null %}
-										<span class="buildAverage">À noter</span>
+										<span class="buildAverage">Inconnu</span>
 										<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
 									{% else %}
 										<span class="buildAverage">{{ build.average|number_format(2, ',', ' ') }}/ 5</span>

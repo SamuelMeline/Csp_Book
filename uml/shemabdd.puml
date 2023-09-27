@@ -1,0 +1,57 @@
+@startuml
+
+' Définitions des classes 
+
+class User {
+    + id : int
+    + full_name : string
+    + pseudo : string
+    + email : string
+    + roles : string
+    + password : string
+    + created_at : datetime
+    + updated_at : datetime
+}
+
+class Build {
+    + id : int
+    + user_id : int
+    + name : string
+    + price : float
+    + is_public : boolean
+    + created_at : datetime
+    + updated_at : datetime
+}
+
+class Item {
+    + id : int
+    + user_id : int
+    + image : string
+    + name : string
+    + price : float
+    + created_at : datetime
+}
+
+class Build_Item {
+    + build_id : int
+    + item_id : int
+}
+
+class Mark {
+    + id : int
+    + user_id : int
+    + build_id : int
+    + mark : int
+    + created_at : datetime
+}
+
+
+' Définition des cardinalités
+User *-- Build : 1..* {user.id} : Crée
+User *-- Mark : 0..* {user.id} : Met
+User *-- Item : 1..* {user.id} : Crée
+Build *-- Mark : 0..* {build.id} : A
+Build *-- Build_Item : 1..* {build.id} : Contient
+Build_Item *-- Item : 1..* {build_item.id} : Comprend
+
+@enduml
