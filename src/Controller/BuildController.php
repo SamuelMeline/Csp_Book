@@ -74,28 +74,42 @@ class BuildController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    #[IsGranted('ROLE_USER')]
+    // Vérifie que l'utilisateur est connecté
+    #[IsGranted('ROLE_USER')] 
+    // Définit la route et les méthodes HTTP autorisées
     #[Route('/panoplie/nouveau/', name: 'build.new', methods: ['GET', 'POST'])]
+    // Définit les paramètres de la méthode $request pour la requête http et $manager pour la base de données.
+    //La méthode retourne une réponse.
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
+        // Crée une nouvelle instance de Build
         $build = new Build();
+        // Crée le formulaire
         $form = $this->createForm(BuildType::class, $build);
+        // Gère la requête
         $form->handleRequest($request);
+        // Vérifie que le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
-
+            // Récupère les données du formulaire
             $build = $form->getData();
+            // Définit l'utilisateur comme propriétaire de la panoplie
             $build->setUser($this->getUser());
 
+            // Enregistre la panoplie
             $manager->persist($build);
+            // Enregistre les modifications
             $manager->flush();
 
-            $this->addFlash('success', 'La panoplie a bien été créée.');
+            // Ajoute un message flash
+            $this->addFlash('success', 'La panoplie a bien été créée.'); 
 
-            return $this->redirectToRoute('build.index');
+            // Redirige vers la liste des panoplies
+            return $this->redirectToRoute('build.index'); 
         }
 
+        // Affiche le formulaire
         return $this->render('pages/build/new.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView() 
         ]);
     }
 
