@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block meta_description %}Bienvenue sur les compositions d'items partager par notre communauté, servez-vous en pour améliorer vos performances dans le jeu League of Legends.
+{% endblock %}
+
 {% block title %}Csp_Book - Panoplies de la communauté
 {% endblock %}
 
@@ -15,7 +18,7 @@
 		</section>
 		<section class="tableBody">
 			<div class="lengthBuild">
-				<p>
+				<h2>
 					{% if builds|length > 1 %}
 						Il y a
 						{{ builds|length }}
@@ -25,7 +28,7 @@
 						{{ builds|length }}
 						panoplie
 					{% endif %}
-				</p>
+				</h2>
 			</div>
 			<table>
 				<thead>

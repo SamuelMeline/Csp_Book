@@ -1,68 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block meta_description %}Bienvenue sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. Rejoignez notre communauté passionnée et transformez votre expérience de jeu !{% endblock %}
-
-{% block title %}Accueil
+{% block meta_description %}Bienvenue sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. Rejoignez notre communauté passionnée et transformez votre expérience de jeu !
 {% endblock %}
+
+{% block title %}Csp_Book - Accueil
+{% endblock %}
+
 {% block body %}
-		<body>
-			<main class="content">
-				<section class="home">
-					<h1 class="title">Bienvenue sur notre application</h1>
-					<div class="blockOne">
-						<div class="left">
-							<h2>Présentation de l'application</h2>
-							<p>Notre application vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends.</p>
-							<p>Vous pouvez également découvrir les compositions créées par d'autres joueurs talentueux et bénéficier des conseils et des idées pour améliorer vos stratégies.</p>
-						</div>
-						<div class="right">
-							<img src="/images/jax.jpg" alt="">
-						</div>
+	<body>
+		<main class="content">
+			<section class="home">
+				<h1 class="title">Bienvenue sur notre application</h1>
+				<section class="blockOne">
+					<div class="left">
+						<h2>Présentation de l'application</h2>
+						<p>Notre application vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends.</p>
+						<p>Vous pouvez également découvrir les compositions créées par d'autres joueurs talentueux et bénéficier des conseils et des idées pour améliorer vos stratégies.</p>
 					</div>
-					<div class="blockTwo">
-						<div class="left">
-							<h2>Fonctionnement de l'application</h2>
-							<p>Notre plateforme vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. Lorsque vous jouez à ce jeu, la sélection des bons items pour votre personnage est crucial pour maximiser votre potentiel.</p>
-							<p>Notre application vous offre un outil puissant pour explorer les différentes combinaisons d'items disponibles et créer des compositions optimisées.</p>
-						</div>
-						<div class="right">
-							<img src="/images/shaco.jpg" alt="">
-						</div>
-					</div>
-					<div class="blockThree">
-						<div class="left">
-							<h2>Jeux pris en charge</h2>
-							<p>Notre application est conçue spécifiquement pour le jeu League of Legends. Ce jeu est connu pour son aspect stratégique et la nécessité de choisir les bons items pour chaque situation. Notre application vous aide à prendre des décisions éclairées pour améliorer vos performances dans ce jeu passionnant.</p>
-						</div>
-						<div class="right">
-							<img src="/images/zeri.jpeg" alt="">
-						</div>
-					</div>
-					<div class="blockFour">
-						<div class="left">
-							<h2>Créez, partagez, améliorez</h2>
-							<p>Partagez vos compositions avec la communauté, découvrez les compositions créées par d'autres joueurs talentueux et bénéficiez des conseils et des idées pour améliorer vos stratégies. Ensemble, nous pouvons repousser les limites et atteindre de nouveaux sommets dans League of Legends.</p>
-						</div>
-						<div class="right">
-							<img src="/images/briar.jpg" alt="">
-						</div>
-					</div>
-					<div class="blockFive">
-						<div class="left">
-							<h2>Rejoignez notre communauté</h2>
-							<p>Ne vous contentez pas de deviner les meilleurs items pour votre personnage. Utilisez notre application pour affiner vos compétences, gagner en compétitivité et devenir un joueur d'élite dans League of Legends.</p>
-							<p>Rejoignez dès maintenant notre communauté passionnée et transformez votre expérience de jeu !</p>
-						</div>
-						<div class="right">
-							<h3 class="home-video">Vidéo pour apprendre le jeu</h3>
-							<video class="video" controls>
-								<source src="{{ asset('videos/lol.mp4') }}" type="video/mp4">
-								Votre navigateur ne prend pas en charge la lecture de vidéos.
-							</video>
-						</div>
+					<div class="right">
+						<img src="/images/jax.jpg" alt="personnageJax">
 					</div>
 				</section>
-			</main>
-		</body>
-	</html>
+				<section class="blockTwo">
+					<div class="left">
+						<h2>Fonctionnement de l'application</h2>
+						<p>Notre plateforme vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. Lorsque vous jouez à ce jeu, la sélection des bons items pour votre personnage est crucial pour maximiser votre potentiel.</p>
+						<p>Notre application vous offre un outil puissant pour explorer les différentes combinaisons d'items disponibles et créer des compositions optimisées.</p>
+					</div>
+					<div class="right">
+						<img src="/images/shaco.jpg" alt="personnageShaco">
+					</div>
+				</section>
+				<section class="blockThree">
+					<div class="left">
+						<h2>Jeux pris en charge</h2>
+						<p>Notre application est conçue spécifiquement pour le jeu League of Legends. Ce jeu est connu pour son aspect stratégique et la nécessité de choisir les bons items pour chaque situation. Notre application vous aide à prendre des décisions éclairées pour améliorer vos performances dans ce jeu passionnant.</p>
+					</div>
+					<div class="right">
+						<img src="/images/zeri.jpeg" alt="personnageZeri">
+					</div>
+				</section>
+				<section class="blockFour">
+					<div class="left">
+						<h2>Créez, partagez, améliorez</h2>
+						<p>Partagez vos compositions avec la communauté, découvrez les compositions créées par d'autres joueurs talentueux et bénéficiez des conseils et des idées pour améliorer vos stratégies. Ensemble, nous pouvons repousser les limites et atteindre de nouveaux sommets dans League of Legends.</p>
+					</div>
+					<div class="right">
+						<img src="/images/briar.jpg" alt="personnageBriar">
+					</div>
+				</section>
+				<section class="blockFive">
+					<div class="left">
+						<h2>Rejoignez notre communauté</h2>
+						<p>Ne vous contentez pas de deviner les meilleurs items pour votre personnage. Utilisez notre application pour affiner vos compétences, gagner en compétitivité et devenir un joueur d'élite dans League of Legends.</p>
+						<p>Rejoignez dès maintenant notre communauté passionnée et transformez votre expérience de jeu !</p>
+					</div>
+					<div class="right">
+						<h3 class="home-video">Vidéo pour apprendre le jeu</h3>
+						<video class="video" controls>
+							<source src="{{ asset('videos/lol.mp4') }}" type="video/mp4">
+							Votre navigateur ne prend pas en charge la lecture de vidéos.
+						</video>
+					</div>
+				</section>
+			</section>
+		</main>
+	</body>
 {% endblock %}

@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block meta_description %}Bienvenue sur la liste de vos d'items pour améliorer vos performances dans le jeu League of Legends.
+{% endblock %}
+
 {% block title %}Csp_Book - Mes items
 {% endblock %}
 
@@ -16,7 +19,7 @@
 		<section class="tableBody">
 			<div class="lengthBuild">
 				{% if not items.items is empty %}
-					<p>
+					<h2>
 						{% if items.getTotalItemCount > 1 %}
 							Il y a
 							{{ items.getTotalItemCount }}
@@ -26,7 +29,7 @@
 							{{ items.getTotalItemCount }}
 							item
 						{% endif %}
-					</p>
+					</h2>
 				</div>
 				<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
 				<table>
@@ -65,7 +68,9 @@
 					</tbody>
 				</table>
 			{% else %}
-				<p>Il n'y a pas d'items</p>
+				<div class="lengthBuild">
+					<h2 class="lengthBuild">Aucun item</h2>
+				</div>
 				<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
 			{% endif %}
 		</section>

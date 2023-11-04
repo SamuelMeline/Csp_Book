@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block meta_description %}Bienvenue sur la liste de vos panoplies pour améliorer vos performances dans le jeu League of Legends.
+{% endblock %}
+
 {% block title %}Csp_Book - Mes panoplies
 {% endblock %}
 
@@ -15,64 +18,70 @@
 		</section>
 		<section class="tableBody">
 			<div class="lengthBuild">
-			{% if not builds.items is empty %}
-				<p>
-					{% if builds.getTotalItemCount > 1 %}
-						Il y a {{ builds.getTotalItemCount }} panoplies
-					{% else %}
-						Il y a {{ builds.getTotalItemCount }} panoplie
-					{% endif %}
-				</p>
-			</div>
-			<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
-			<table>
-				<thead>
-					<tr>
-						<th>Numéro</th>
-						<th>Nom</th>
-						<th>Items</th>
-						<th>Prix</th>
-						<th>Date de création</th>
-						<th>Edition</th>
-						<th>Suppression</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for build in builds %}
+				{% if not builds.items is empty %}
+					<h2>
+						{% if builds.getTotalItemCount > 1 %}
+							Il y a
+							{{ builds.getTotalItemCount }}
+							panoplies
+						{% else %}
+							Il y a
+							{{ builds.getTotalItemCount }}
+							panoplie
+						{% endif %}
+					</h2>
+				</div>
+				<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
+				<table>
+					<thead>
 						<tr>
-							<td>{{ build.id }}</td>
-							<td>{{ build.name }}</td>
-							<td>
-								{# Récupérer l'image de l'item ajouté #}
-								{% for item in build.items %}
-									{% if item.image is not null %}
-										<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
-									{% endif %}
-								{% endfor %}
-							</td>
-							<td>
-								{% if build.price is null %}
-									Non renseigné
-								{% else %}
-									<div class="build-price-container">
-										<span class="build-price">{{ build.price }}</span>
-										<img src="{{ asset('images/gold.png') }}" alt="{{ build.name }}" class="gold-image">
-									</div>
-								{% endif %}
-							</td>
-							<td>{{ build.createdAt|date('d/m/Y') }}</td>
-							<td>
-								<a href="{{ path('build.edit', { id : build.id }) }}" class="editBtn">Modifier</a>
-							</td>
-							<td>
-								<a href="{{ path('build.delete', { id : build.id }) }}" class="deleteBtn" data-url="{{ path('build.delete', {id: build.id}) }}">Supprimer</a>
-							</td>
+							<th>Numéro</th>
+							<th>Nom</th>
+							<th>Items</th>
+							<th>Prix</th>
+							<th>Date de création</th>
+							<th>Edition</th>
+							<th>Suppression</th>
 						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{% for build in builds %}
+							<tr>
+								<td>{{ build.id }}</td>
+								<td>{{ build.name }}</td>
+								<td>
+									{# Récupérer l'image de l'item ajouté #}
+									{% for item in build.items %}
+										{% if item.image is not null %}
+											<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
+										{% endif %}
+									{% endfor %}
+								</td>
+								<td>
+									{% if build.price is null %}
+										Non renseigné
+									{% else %}
+										<div class="build-price-container">
+											<span class="build-price">{{ build.price }}</span>
+											<img src="{{ asset('images/gold.png') }}" alt="{{ build.name }}" class="gold-image">
+										</div>
+									{% endif %}
+								</td>
+								<td>{{ build.createdAt|date('d/m/Y') }}</td>
+								<td>
+									<a href="{{ path('build.edit', { id : build.id }) }}" class="editBtn">Modifier</a>
+								</td>
+								<td>
+									<a href="{{ path('build.delete', { id : build.id }) }}" class="deleteBtn" data-url="{{ path('build.delete', {id: build.id}) }}">Supprimer</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			{% else %}
-				<p>Il n'y a pas de panoplies</p>
+				<div class="lengthBuild">
+					<h2>Aucune panoplie</h2>
+				</div>
 				<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
 			{% endif %}
 		</section>
