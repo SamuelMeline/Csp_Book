@@ -59,7 +59,7 @@
 							<tr>
 								<td>{{ build.id }}</td>
 								<td>{{ build.name }}</td>
-								<td>
+								<td class="minLong">
 									{# Récupérer l'image de l'item ajouté #}
 									{% for item in build.items %}
 										{% if item.image is not null %}
@@ -67,7 +67,7 @@
 										{% endif %}
 									{% endfor %}
 								</td>
-								<td>
+								<td class="minLong">
 									{% if build.average is null %}
 										<span class="buildAverage">Inconnu</span>
 										<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>

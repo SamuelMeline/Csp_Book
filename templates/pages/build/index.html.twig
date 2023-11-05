@@ -49,7 +49,7 @@
 							<tr>
 								<td>{{ build.id }}</td>
 								<td>{{ build.name }}</td>
-								<td>
+								<td class="minLong">
 									{# Récupérer l'image de l'item ajouté #}
 									{% for item in build.items %}
 										{% if item.image is not null %}
