@@ -1,48 +1,60 @@
-<header>
-	<nav>
-		<a class="logoUrl" href="{{ path('home.index') }}"><img src="/images/icons/logo.png" class="logo" alt="logo"></a>
-		<ul>
-			<li>
-				<a href="{{ path('home.index') }}">Accueil</a>
-			</li>
-			<li>
-				<a href="{{ path('build.public') }}">Panoplies de la communauté</a>
-			</li>
-			{% if app.user %}
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="{% block meta_description %}Application qui permet de créer et de partager des items ou des panoplies{% endblock %}">
+		<title>
+			{% block title %}Header
+			{% endblock %}
+		</title>
+	</head>
+	<header>
+		<nav>
+			<a class="logoUrl" href="{{ path('home.index') }}"><img src="/images/icons/logo.png" class="logo" alt="logo"></a>
+			<ul>
 				<li>
-					<a href="{{ path('item.index') }}">Mes items</a>
+					<a href="{{ path('home.index') }}">Accueil</a>
 				</li>
-			</li>
-			<li>
-				<a href="{{ path('build.index') }}">Mes panoplies</a>
-			</li>
-		{% endif %}
-	</ul>
-	<ul class="navbar-nav">
-		{% if app.user %}
-			<li class="nav-item dropdown">
-				<a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/menu.png" alt="menu" class="menu-icon"></a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
-					<a class="dropdown-item" href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
-					<div class="dropdawn-divider"></div>
-					{% if 'ROLE_ADMIN' in app.user.roles %}
-						<a class="dropdown-item" href="{{ path('search_form') }}">Recherche d'utilisateur</a>
-						<a class="dropdown-item" href="{{ path('admin.index') }}">Administration</a>
-						<div class="dropdawn-divider"></div>
-					{% endif %}
-					<a class="dropdown-item" href="{{ path('security.logout') }}">Déconnexion</a>
-				</div>
-			</li>
-		{% else %}
-			<li class="nav-item dropdown">
-				<a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/menu.png" alt="menu" class="menu-icon"></a>
-				<div class="dropdown-menu custom-dropdown-menu">
-					<a class="dropdown-item" href="{{ path('security.login') }}">Connexion</a>
-					<a class="dropdown-item" href="{{ path('security.registration') }}">Inscription</a>
+				<li>
+					<a href="{{ path('build.public') }}">Panoplies de la communauté</a>
 				</li>
-			{% endif %}
-		</ul>
-	</nav>
-</header>
-<div class="overlay"></div>
+				{% if app.user %}
+					<li>
+						<a href="{{ path('item.index') }}">Mes items</a>
+					</li>
+					<li>
+						<a href="{{ path('build.index') }}">Mes panoplies</a>
+					</li>
+				{% endif %}
+			</ul>
+			<ul class="navbar-nav">
+				{% if app.user %}
+					<li class="nav-item dropdown">
+						<a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/menu.png" alt="menu" class="menu-icon"></a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
+							<a class="dropdown-item" href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a>
+							<div class="dropdawn-divider"></div>
+							{% if 'ROLE_ADMIN' in app.user.roles %}
+								<a class="dropdown-item" href="{{ path('search_form') }}">Recherche d'utilisateur</a>
+								<a class="dropdown-item" href="{{ path('admin.index') }}">Administration</a>
+								<div class="dropdawn-divider"></div>
+							{% endif %}
+							<a class="dropdown-item" href="{{ path('security.logout') }}">Déconnexion</a>
+						</div>
+					</li>
+				{% else %}
+					<li class="nav-item dropdown">
+						<a data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/menu.png" alt="menu" class="menu-icon"></a>
+						<div class="dropdown-menu custom-dropdown-menu">
+							<a class="dropdown-item" href="{{ path('security.login') }}">Connexion</a>
+							<a class="dropdown-item" href="{{ path('security.registration') }}">Inscription</a>
+						</div>
+					</li>
+				{% endif %}
+			</ul>
+		</nav>
+	</header>
+	<div class="overlay"></div>
+</html>

@@ -117,9 +117,9 @@ nav .menu-icon {
 }
 
 .dropdown-menu {
-	top: 20px;
+	top: 20px !important;
 	left: 10%;
-	background-color: #ffffff5c;
+	background-color: rgba(0, 0, 0, 0.568);
 	border: 2px solid #ffd700;
 	border-radius: 20px;
 	text-align: center;
@@ -258,11 +258,12 @@ nav .menu-icon {
 
 .wrapper {
 	width: 100%;
-	background-color: rgba(0 0 0 / 30%);
 	margin: 0 auto;
 	border-radius: 20px;
 	padding: 30px 40px;
 	margin-top: 30px;
+	background-color: rgba(0, 0, 0, 0.568);
+	backdrop-filter: blur(7px);
 }
 
 .wrapper h1 {
@@ -807,7 +808,8 @@ footer img {
 }
 
 footer {
-	background-color: #111111d8;
+	background-color: rgba(0, 0, 0, 0.568);
+	backdrop-filter: blur(7px);
 	position: relative;
 	bottom: 0;
 	width: 100%;
@@ -1367,7 +1369,7 @@ footer {
 	/* Header */
 
 	main.table {
-		width: 80%;
+		width: 75%;
 		margin-top: 0;
 	}
 

@@ -1,33 +1,37 @@
-{% extends 'base.html.twig' %}
+<!Doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="{% block meta_description %}Modifier vos items pour améliorer vos performances dans le jeu League of Legends. {% endblock %}">
+		<title>
+			{% block title %}Csp_Book - Modifier mes items
+			{% endblock %}
+		</title>
+	</head>
+	{% extends 'base.html.twig' %}
+	{% block body %}
+		<main class="content">
+			<div class="wrapper">
+				<h1 class="page-title">Modification de l'item</h1>
+				{{ form_start(form) }}
 
-{% block meta_description %}Modifier vos items pour améliorer vos performances dans le jeu League of Legends.
-{% endblock %}
-
-{% block title %}Csp_Book - Modifier mes items
-{% endblock %}
-
-{% block body %}
-	<main class="content">
-		<div class="wrapper">
-			<h1 class="page-title">Modification de l'item</h1>
-			{{ form_start(form) }}
-
-			<div class="form-group editImage">
-				<div>
-					{% if item.image is not empty %}
-						<img src="{{ asset('images/items/' ~ item.image) }}" alt="Item Image" class="item-image">
-					{% endif %}
-				</div>
-				<div class="form-group inputBox">
-					{{ form_widget(form.image, {'attr': {'class': 'image-input chooseImage', 'placeholder': 'Image'}}) }}
-					<div class="form-error">
-						{{ form_errors(form.image) }}
+				<div class="form-group editImage">
+					<div>
+						{% if item.image is not empty %}
+							<img src="{{ asset('images/items/' ~ item.image) }}" alt="Item Image" class="item-image">
+						{% endif %}
+					</div>
+					<div class="form-group inputBox">
+						{{ form_widget(form.image, {'attr': {'class': 'image-input chooseImage', 'placeholder': 'Image'}}) }}
+						<div class="form-error">
+							{{ form_errors(form.image) }}
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="form-group inputEdit">
-				{{ form_label(form.name) }}
-				{{ form_widget(form.name, {'attr': {'class': 'name-input', 'placeholder' : 'Nom de l\'item'}}) }}
+				<div class="form-group inputEdit">
+					{{ form_label(form.name) }}
+					{{ form_widget(form.name, {'attr': {'class': 'name-input', 'placeholder' : 'Nom de l\'item'}}) }}
 				<div class="form-error">
 					{{ form_errors(form.name) }}
 				</div>
@@ -36,15 +40,16 @@
 			<div class="form-group inputBox">
 				{{ form_label(form.price) }}
 				{{ form_widget(form.price, {'attr': {'class': 'price-input', 'placeholder' : 'Prix de l\'item'}}) }}
-				<div class="form-error">
-					{{ form_errors(form.price) }}
+					<div class="form-error">
+						{{ form_errors(form.price) }}
+					</div>
 				</div>
+
+				<button type="submit" class="btn">Modifier mon item</button>
+
+
+				{{ form_end(form) }}
 			</div>
-
-			<button type="submit" class="btn">Modifier mon item</button>
-
-
-			{{ form_end(form) }}
-		</div>
-	</main>
-{% endblock %}
+		</main>
+	{% endblock %}
+</html>

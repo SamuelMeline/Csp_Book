@@ -1,32 +1,36 @@
-<footer>
-	<div class="footerContainer">
-		<div class="socialIcons">
-			<a href="https://github.com/SamuelMeline"><img src="{{ asset('images/footer/github.svg') }}"></a>
-			<a href="https://www.linkedin.com/in/samuel-m%C3%A9line-1462b5222/"><img src="{{ asset('images/footer/linkedin.svg') }}"></a>
-			<a href="https://www.twitch.tv/samouye"><img src="{{ asset('images/footer/twitch.svg') }}"></a>
-			<a href="https://www.instagram.com/sam__mln/"><img src="{{ asset('images/footer/instagram.svg') }}"></a>
-			<a href="https://www.youtube.com/channel/UCYEDTumQZKvcyYgbtmoyRSw"><img src="{{ asset('images/footer/youtube.svg') }}"></a>
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="{% block meta_description %}Application qui permet de créer et de partager des items ou des panoplies{% endblock %}">
+		<title>
+			{% block title %}Footer
+			{% endblock %}
+		</title>
+	</head>
+	<footer>
+		<div class="footerContainer">
+			<div class="socialIcons">
+				<a href="https://github.com/SamuelMeline"><img src="{{ asset('images/footer/github.svg') }}" alt="github"></a>
+				<a href="https://www.linkedin.com/in/samuel-m%C3%A9line-1462b5222/"><img src="{{ asset('images/footer/linkedin.svg') }}" alt="linkedin"></a>
+				<a href="https://www.twitch.tv/samouye"><img src="{{ asset('images/footer/twitch.svg') }}" alt="twitch"></a>
+				<a href="https://www.instagram.com/sam__mln/"><img src="{{ asset('images/footer/instagram.svg') }}" alt="instagram"></a>
+				<a href="https://www.youtube.com/channel/UCYEDTumQZKvcyYgbtmoyRSw"><img src="{{ asset('images/footer/youtube.svg') }}" alt="youtube"></a>
+			</div>
+			<div class="footerNav">
+				<ul>
+					<li><a href="{{path('home.index')}}">Accueil</a></li>
+					<li><a href="{{path('build.public')}}">Panoplies de la communauté</a></li>
+					<li><a href="{{path('item.index')}}">Mes items</a></li>
+					<li><a href="{{path('build.index')}}">Mes panoplies</a></li>
+				</ul>
+			</div>
+			<div class="footerBottom">
+				<p>Copyright &copy;2023; Designed by
+					<span class="designer">Samuel Méline</span>
+				</p>
+			</div>
 		</div>
-		<div class="footerNav">
-			<ul>
-				<li>
-					<a href="{{ path('home.index') }}">Accueil</a>
-				</li>
-				<li>
-					<a href="{{ path('build.public') }}">Panoplies de la communauté</a>
-				</li>
-				<li>
-					<a href="{{ path('item.index') }}">Mes items</a>
-				</li>
-			</li>
-			<li>
-				<a href="{{ path('build.index') }}">Mes panoplies</a>
-			</li>
-		</ul>
-	</div>
-	<div class="footerBottom">
-		<p>Copyright &copy;2023; Designed by
-			<span class="designer">Samuel Méline</span>
-		</p>
-	</div>
-</footer>
+	</footer>
+</html>

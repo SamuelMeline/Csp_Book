@@ -1,107 +1,113 @@
-{% extends 'base.html.twig' %}
-
-{% block meta_description %}Bienvenue sur les compositions d'items partager par notre communauté, servez-vous en pour améliorer vos performances dans le jeu League of Legends.
-{% endblock %}
-
-{% block title %}Csp_Book - Panoplies de la communauté
-{% endblock %}
-
-{% block body %}
-	<main class="table">
-		<section class="tableHeader">
-			<h1 class="tableTitle">Panoplies de la communauté</h1>
-			{% for flashMessage in app.session.flashbag.get('success') %}
-				<div class="flash-success">
-					{{ flashMessage }}
+<!Doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="{% block meta_description %}Bienvenue sur les compositions d'items partager par notre communauté, servez-vous en pour améliorer vos performances dans le jeu League of Legends. {% endblock %}">
+		<title>
+			{% block title %}Csp_Book - Panoplies de la communauté
+			{% endblock %}
+		</title>
+	</head>
+	{% extends 'base.html.twig' %}
+	{% block body %}
+		<main class="table">
+			<section class="tableHeader">
+				<h1 class="tableTitle">Panoplies de la communauté</h1>
+				{% for flashMessage in app.session.flashbag.get('success') %}
+					<div class="flash-success">
+						{{ flashMessage }}
+					</div>
+				{% endfor %}
+			</section>
+			<section class="tableBody">
+				<div class="lengthBuild">
+					<h2>
+						{% if builds|length > 1 %}
+							Il y a
+							{{ builds|length }}
+							panoplies
+						{% else %}
+							Il y a
+							{{ builds|length }}
+							panoplie
+						{% endif %}
+					</h2>
 				</div>
-			{% endfor %}
-		</section>
-		<section class="tableBody">
-			<div class="lengthBuild">
-				<h2>
-					{% if builds|length > 1 %}
-						Il y a
-						{{ builds|length }}
-						panoplies
-					{% else %}
-						Il y a
-						{{ builds|length }}
-						panoplie
-					{% endif %}
-				</h2>
-			</div>
-			<table>
-				<thead>
-					<tr>
-						<th>
-							Numéro
-						</th>
-						<th>
-							Nom
-						</th>
-						<th>
-							Items
-						</th>
-						<th>
-							Note
-						</th>
-						<th>
-							Prix
-						</th>
-						<th>
-							Date de création
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% if builds is not empty %}
-						{% for build in builds %}
-							<tr>
-								<td>{{ build.id }}</td>
-								<td>{{ build.name }}</td>
-								<td class="minLong">
-									{# Récupérer l'image de l'item ajouté #}
-									{% for item in build.items %}
-										{% if item.image is not null %}
-											<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
-										{% endif %}
-									{% endfor %}
-								</td>
-								<td class="minLong">
-									{% if build.average is null %}
-										<span class="buildAverage">Inconnu</span>
-										<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
-									{% else %}
-										<span class="buildAverage">{{ build.average|number_format(2, ',', ' ') }}/ 5</span>
-										<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
-									{% endif %}
-								</td>
-								<td>
-									{% if build.price is null %}
-										Non renseigné
-									{% else %}
-										<div class="build-price-container">
-											<span class="build-price">{{ build.price }}</span>
-											<img src="{{ asset('images/gold.png') }}" alt="{{ build.name }}" class="gold-image">
-										</div>
-									{% endif %}
-								</td>
-								<td>{{ build.createdAt|date('d/m/Y') }}</td>
-							</tr>
-						{% endfor %}
-					{% else %}
+				<table>
+					<thead>
 						<tr>
-							<td colspan="7">Aucun résultat trouvé.</td>
+							<th>
+								Numéro
+							</th>
+							<th>
+								Nom
+							</th>
+							<th>
+								Items
+							</th>
+							<th>
+								Note
+							</th>
+							<th>
+								Prix
+							</th>
+							<th>
+								Date de création
+							</th>
 						</tr>
-					{% endif %}
-				</tbody>
-			</table>
-		</section>
-		<div>
-			<form action="{{ path('search.items') }}" class="search-item" method="GET">
-				<input type="text" name="item" id="search-item" placeholder="Rechercher un item">
-			</form>
-		</div>
-		<div id="search-results-items"></div>
-	</main>
-{% endblock %}
+					</thead>
+					<tbody>
+						{% if builds is not empty %}
+							{% for build in builds %}
+								<tr>
+									<td>{{ build.id }}</td>
+									<td>{{ build.name }}</td>
+									<td
+										class="minLong">
+										{# Récupérer l'image de l'item ajouté #}
+										{% for item in build.items %}
+											{% if item.image is not null %}
+												<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
+											{% endif %}
+										{% endfor %}
+									</td>
+									<td class="minLong">
+										{% if build.average is null %}
+											<span class="buildAverage">Inconnu</span>
+											<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
+										{% else %}
+											<span class="buildAverage">{{ build.average|number_format(2, ',', ' ') }}/ 5</span>
+											<a href="{{ path('build.show', {'id': build.id}) }}" class="markBtn">Noter la panoplie</a>
+										{% endif %}
+									</td>
+									<td>
+										{% if build.price is null %}
+											Non renseigné
+										{% else %}
+											<div class="build-price-container">
+												<span class="build-price">{{ build.price }}</span>
+												<img src="{{ asset('images/gold.png') }}" alt="{{ build.name }}" class="gold-image">
+											</div>
+										{% endif %}
+									</td>
+									<td>{{ build.createdAt|date('d/m/Y') }}</td>
+								</tr>
+							{% endfor %}
+						{% else %}
+							<tr>
+								<td colspan="7">Aucun résultat trouvé.</td>
+							</tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</section>
+			<div>
+				<form action="{{ path('search.items') }}" class="search-item" method="GET">
+					<input type="text" name="item" id="search-item" placeholder="Rechercher un item">
+				</form>
+			</div>
+			<div id="search-results-items"></div>
+		</main>
+	{% endblock %}
+</html>

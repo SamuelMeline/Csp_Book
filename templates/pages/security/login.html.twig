@@ -1,41 +1,46 @@
-{% extends 'base.html.twig' %}
+<!Doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="descritpiton" content="{% block meta_description %}Connectez vous sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. {% endblock %}">
+		<title>
+			{% block title %}Csp_Book - Connexion
+			{% endblock %}
+		</title>
+	</head>
+	{% extends 'base.html.twig' %}
+	{% block body %}
+		<main class="content">
+			<div class="wrapper">
+				<form action="{{ path('security.login') }}" method="post">
+					<h1>Se connecter</h1>
+					{% for flashMessage in app.session.flashbag.get('success') %}
+						<div class="flash-success">
+							{{ flashMessage }}
+						</div>
+					{% endfor %}
 
-{% block meta_description %}Connectez vous sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends.
-{% endblock %}
-
-{% block title %}Csp_Book - Connexion
-{% endblock %}
-
-{% block body %}
-	<main class="content">
-		<div class="wrapper">
-			<form action="{{ path('security.login') }}" method="post">
-				<h1>Se connecter</h1>
-				{% for flashMessage in app.session.flashbag.get('success') %}
-					<div class="flash-success">
-						{{ flashMessage }}
+					{% if error %}
+						<div class="form-error">
+							{{ error.messageKey|trans(error.messageData, 'security') }}
+						</div>
+					{% endif %}
+					<div class="inputBox">
+						<input type="email" id="username" name="_username" placeholder="Adresse email" required value="{{ last_username }}">
+						<img src="/images/icons/user.png" alt="userLogin">
 					</div>
-				{% endfor %}
-
-				{% if error %}
-					<div class="form-error">
-						{{ error.messageKey|trans(error.messageData, 'security') }}
+					<div class="inputBox">
+						<input type="password" id="password" name="_password" placeholder="Mot de passe" required>
+						<img src="/images/icons/lock.png" alt="userPassword">
 					</div>
-				{% endif %}
-				<div class="inputBox">
-					<input type="email" id="username" name="_username" placeholder="Adresse email" required value="{{ last_username }}">
-					<img src="/images/icons/user.png" alt="userLogin">
-				</div>
-				<div class="inputBox">
-					<input type="password" id="password" name="_password" placeholder="Mot de passe" required>
-					<img src="/images/icons/lock.png" alt="userPassword">
-				</div>
-				<button type="submit" class="btn">Se connecter</button>
+					<button type="submit" class="btn">Se connecter</button>
 
-				<div class="registerLink">
-					<a href="{{ path('security.registration') }}">Pas encore inscrit ?</a>
-				</div>
-			</form>
-		</div>
-	</main>
-{% endblock %}
+					<div class="registerLink">
+						<a href="{{ path('security.registration') }}">Pas encore inscrit ?</a>
+					</div>
+				</form>
+			</div>
+		</main>
+	{% endblock %}
+</html>

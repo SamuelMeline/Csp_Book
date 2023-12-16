@@ -1,13 +1,16 @@
-{% extends 'base.html.twig' %}
-
-{% block meta_description %}Bienvenue sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. Rejoignez notre communauté passionnée et transformez votre expérience de jeu !
-{% endblock %}
-
-{% block title %}Csp_Book - Accueil
-{% endblock %}
-
-{% block body %}
-	<body>
+<!Doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="descripiton" content="{% block meta_description %}Bienvenue sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. Rejoignez notre communauté passionnée et transformez votre expérience de jeu ! {% endblock %}">
+		<title>
+			{% block title %}Csp_Book - Accueil
+			{% endblock %}
+		</title>
+	</head>
+	{% extends 'base.html.twig' %}
+	{% block body %}
 		<main class="content">
 			<section class="home">
 				<h1 class="title">Bienvenue sur notre application</h1>
@@ -65,5 +68,5 @@
 				</section>
 			</section>
 		</main>
-	</body>
-{% endblock %}
+	{% endblock %}
+</html>

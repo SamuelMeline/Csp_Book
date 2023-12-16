@@ -1,45 +1,50 @@
-{% extends 'base.html.twig' %}
+<!Doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="descirption" content="{% block meta_description %}Page de notation sur les compositions d'items partager par notre communauté, n'hésitez pas pour donner un avis aux autres utilisateurs ! {% endblock %}">
+		<title>
+			{% block title %}
+				Csp_Book -
+				{{ build.name }}
+			{% endblock %}
+		</title>
+	</head>
+	{% extends 'base.html.twig' %}
+	{% block body %}
+		<main class="content">
+			<div class="wrapper">
+				{% for flashMessage in app.session.flashbag.get('success') %}
+					<div class="flash-success">
+						{{ flashMessage }}
+					</div>
+				{% endfor %}
 
-{% block meta_description %}Page de notation sur les compositions d'items partager par notre communauté, n'hésitez pas pour donner un avis aux autres utilisateurs !
-{% endblock %}
+				<h1 class="page-title">{{ build.name }}</h1>
 
-{% block title %}
-	Csp_Book -
-	{{ build.name }}
-{% endblock %}
-
-{% block body %}
-	<main class="content">
-		<div class="wrapper">
-			{% for flashMessage in app.session.flashbag.get('success') %}
-				<div class="flash-success">
-					{{ flashMessage }}
-				</div>
-			{% endfor %}
-
-			<h1 class="page-title">{{ build.name }}</h1>
-
-			<div class="form-group inputShow">
-				{% if build.average is null %}
-					<p>La note de cette panoplie est
-						<span class="buildAverage">Inconnu</span>
-					</p>
-					<p>
+				<div class="form-group inputShow">
+					{% if build.average is null %}
+						<p>La note de cette panoplie est
+							<span class="buildAverage">Inconnu</span>
+						</p>
 					{% else %}
 						<p>La note de cette panoplie est de
 							<span class="buildAverage">{{ build.average|number_format(2, ',', ' ') }}/ 5</span>
-						{% endif %}
-					</p>
+						</p>
+					{% endif %}
 				</div>
 
 				<div class="form-group inputShow">
 					<p>Crée le :
-						{{ build.createdAt|date('d/m/Y') }}</p>
+						{{ build.createdAt|date('d/m/Y') }}
+					</p>
 				</div>
 
 				<div class="form-group inputShow">
 					<p>Prix :
-						{{ build.price }}</p>
+						{{ build.price }}
+					</p>
 				</div>
 
 				<div class="form-group">
@@ -61,8 +66,9 @@
 					{{ form_widget(form.mark, {'attr': {'class': 'mark-input'}}) }}
 					{{ form_errors(form.mark) }}
 					<button type="submit" class="btn">Noter la panoplie</button>
-					{{ form_end(form) }}</div>
-			</p>
-		</div>
-	</main>
-{% endblock %}
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</main>
+	{% endblock %}
+</html>

@@ -1,68 +1,73 @@
-{% extends 'base.html.twig' %}
+<!Doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="{% block meta_description %}Inscrivez vous sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends. {% endblock %}">
+		<title>
+			{% block title %}Csp_Book - Inscription
+			{% endblock %}
+		</title>
+	</head>
+	{% extends 'base.html.twig' %}
+	{% block body %}
+		<main class="content">
+			<div class="wrapper">
+				<h1>S'inscrire</h1>
+				{{ form_start(form) }}
 
-{% block meta_description %}Inscrivez vous sur notre application qui vous permet de créer et partager des compositions d'items pour améliorer vos performances dans le jeu League of Legends.
-{% endblock %}
-
-{% block title %}Csp_Book - Inscription
-{% endblock %}
-
-{% block body %}
-	<main class="content">
-		<div class="wrapper">
-			<h1>S'inscrire</h1>
-			{{ form_start(form) }}
-
-			<div class="form-group inputBox">
-				{{ form_label(form.fullName) }}
-				{{ form_widget(form.fullName, {'attr': {'class': 'username-input', 'placeholder': 'Nom / Prénom'}}) }}
-				<img src="/images/icons/user.png" alt="userLogin">
-				<div class="form-error">
-					{{ form_errors(form.fullName) }}
+				<div class="form-group inputBox">
+					{{ form_label(form.fullName) }}
+					{{ form_widget(form.fullName, {'attr': {'class': 'username-input', 'placeholder': 'Nom / Prénom'}}) }}
+					<img src="/images/icons/user.png" alt="userLogin">
+					<div class="form-error">
+						{{ form_errors(form.fullName) }}
+					</div>
 				</div>
-			</div>
 
-			<div class="form-group inputBox">
-				{{ form_label(form.pseudo) }}
-				{{ form_widget(form.pseudo, {'attr': {'class': 'pseudo-input', 'placeholder': 'Pseudo'}}) }}
-				<img src="/images/icons/user.png" alt="userLogin">
-				<div class="form-error">
-					{{ form_errors(form.pseudo) }}
+				<div class="form-group inputBox">
+					{{ form_label(form.pseudo) }}
+					{{ form_widget(form.pseudo, {'attr': {'class': 'pseudo-input', 'placeholder': 'Pseudo'}}) }}
+					<img src="/images/icons/user.png" alt="userLogin">
+					<div class="form-error">
+						{{ form_errors(form.pseudo) }}
+					</div>
 				</div>
-			</div>
 
-			<div class="form-group inputBox">
-				{{ form_label(form.email) }}
-				{{ form_widget(form.email, {'attr': {'class': 'email-input', 'placeholder': 'Adresse email'}}) }}
-				<img src="/images/icons/enveloppe.png" alt="userLogin">
-				<div class="form-error">
-					{{ form_errors(form.email) }}
+				<div class="form-group inputBox">
+					{{ form_label(form.email) }}
+					{{ form_widget(form.email, {'attr': {'class': 'email-input', 'placeholder': 'Adresse email'}}) }}
+					<img src="/images/icons/enveloppe.png" alt="userLogin">
+					<div class="form-error">
+						{{ form_errors(form.email) }}
+					</div>
 				</div>
-			</div>
 
-			<div class="form-group inputBox">
-				{{ form_label(form.plainPassword.first) }}
-				{{ form_widget(form.plainPassword.first, {'attr': {'class': 'password-input', 'placeholder': 'Mot de passe'}}) }}
-				<img src="/images/icons/lock.png" alt="userPassword">
-				<div class="form-error">
-					{{ form_errors(form.plainPassword.first) }}
+				<div class="form-group inputBox">
+					{{ form_label(form.plainPassword.first) }}
+					{{ form_widget(form.plainPassword.first, {'attr': {'class': 'password-input', 'placeholder': 'Mot de passe'}}) }}
+					<img src="/images/icons/lock.png" alt="userPassword">
+					<div class="form-error">
+						{{ form_errors(form.plainPassword.first) }}
+					</div>
 				</div>
-			</div>
 
-			<div class="form-group inputBox">
-				{{ form_label(form.plainPassword.second) }}
-				{{ form_widget(form.plainPassword.second, {'attr': {'class': 'password-input', 'placeholder': 'Confirmation du mot de passe'}}) }}
-				<img src="/images/icons/lock.png" alt="userPassword">
-			</div>
-			<div class="form-error">
-				{{ form_errors(form.plainPassword.second) }}
-			</div>
+				<div class="form-group inputBox">
+					{{ form_label(form.plainPassword.second) }}
+					{{ form_widget(form.plainPassword.second, {'attr': {'class': 'password-input', 'placeholder': 'Confirmation du mot de passe'}}) }}
+					<img src="/images/icons/lock.png" alt="userPassword">
+				</div>
+				<div class="form-error">
+					{{ form_errors(form.plainPassword.second) }}
+				</div>
 
-			<button type="submit" class="btn">S'inscrire</button>
+				<button type="submit" class="btn">S'inscrire</button>
 
-			<div class="registerLink">
-				<a href="{{ path('security.login') }}">Déjà inscrit ?</a>
+				<div class="registerLink">
+					<a href="{{ path('security.login') }}">Déjà inscrit ?</a>
+				</div>
+				{{ form_end(form) }}
 			</div>
-			{{ form_end(form) }}
-		</div>
-	</main>
-{% endblock %}
+		</main>
+	{% endblock %}
+</html>
