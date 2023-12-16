@@ -1,53 +1,48 @@
-<!Doctype html>
-<html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="descripiton" content="{% block meta_description %}Modifier vos panoplies pour améliorer vos performances dans le jeu League of Legends. {% endblock %} ">
-		<title>
-			{% block title %}Csp_Book - Modifier mes panoplies
-			{% endblock %}
-		</title>
-	</head>
-	{% extends 'base.html.twig' %}
-	{% block body %}
-		<main class="content">
-			<div class="wrapper">
-				<h1 class="page-title">Modification de la panoplie</h1>
-				{{ form_start(form) }}
+{% extends 'base.html.twig' %}
 
-				<div class="form-group inputBox">
-					{{ form_label(form.name) }}
-					{{ form_widget(form.name, {'attr': {'class': 'name-input', 'placeholder' : 'Nom de la panoplie'}}) }}
-					<div class="form-error">
-						{{ form_errors(form.name) }}
-					</div>
-				</div>
+{% block meta_description %}Modifier vos panoplies pour améliorer vos performances dans le jeu League of Legends.
+{% endblock %}
 
-				<div class="form-group inputBox">
-					{{ form_label(form.price) }}
-					{{ form_widget(form.price, {'attr': {'class': 'price-input', 'placeholder' : 'Prix de la panoplie'}}) }}
-					<div class="form-error">
-						{{ form_errors(form.price) }}
-					</div>
-				</div>
+{% block title %}Csp_Book - Modifier mes panoplies
+{% endblock %}
 
-				<div class="form-group inputPublic">
-					{{ form_label(form.isPublic) }}
-					{{ form_widget(form.isPublic, {'attr': {'class': 'isPublic-input'}}) }}
-					<div class="form-error">
-						{{ form_errors(form.isPublic) }}
-					</div>
-				</div>
+{% block body %}
+	<main class="content">
+		<div class="wrapper">
+			<h1 class="page-title">Modification de la panoplie</h1>
+			{{ form_start(form) }}
 
-				{{ form_label(form.items) }}
-				{{ form_widget(form.items, {'attr': {'class': 'items-input'}}) }}
+			<div class="form-group inputBox">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name, {'attr': {'class': 'name-input', 'placeholder' : 'Nom de la panoplie'}}) }}
 				<div class="form-error">
-					{{ form_errors(form.items) }}
+					{{ form_errors(form.name) }}
 				</div>
-				<button type="submit" class="btn">Modifier ma panoplie</button>
 			</div>
-			{{ form_end(form) }}
-		</main>
-	{% endblock %}
-</html>
+
+			<div class="form-group inputBox">
+				{{ form_label(form.price) }}
+				{{ form_widget(form.price, {'attr': {'class': 'price-input', 'placeholder' : 'Prix de la panoplie'}}) }}
+				<div class="form-error">
+					{{ form_errors(form.price) }}
+				</div>
+			</div>
+
+			<div class="form-group inputPublic">
+				{{ form_label(form.isPublic) }}
+				{{ form_widget(form.isPublic, {'attr': {'class': 'isPublic-input'}}) }}
+				<div class="form-error">
+					{{ form_errors(form.isPublic) }}
+				</div>
+			</div>
+
+			{{ form_label(form.items) }}
+			{{ form_widget(form.items, {'attr': {'class': 'items-input'}}) }}
+			<div class="form-error">
+				{{ form_errors(form.items) }}
+			</div>
+			<button type="submit" class="btn">Modifier ma panoplie</button>
+		</div>
+		{{ form_end(form) }}
+	</main>
+{% endblock %}

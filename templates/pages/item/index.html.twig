@@ -1,91 +1,86 @@
-<!Doctype html>
-<html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="{% block meta_description %}Bienvenue sur la liste de vos d'items pour améliorer vos performances dans le jeu League of Legends. {% endblock %}">
-		<title>
-			{% block title %}Csp_Book - Mes items
-			{% endblock %}
-		</title>
-	</head>
-	{% extends 'base.html.twig' %}
-	{% block body %}
-		<main class="table">
-			<section class="tableHeader">
-				<h1 class="tableTitle">Mes items</h1>
-				{% for flashMessage in app.session.flashbag.get('success') %}
-					<div class="flash-success">
-						{{ flashMessage }}
-					</div>
-				{% endfor %}
-			</section>
-			<section class="tableBody">
-				<div class="lengthBuild">
-					{% if not items.items is empty %}
-						<h2>
-							{% if items.getTotalItemCount > 1 %}
-								Il y a
-								{{ items.getTotalItemCount }}
-								items
-							{% else %}
-								Il y a
-								{{ items.getTotalItemCount }}
-								item
-							{% endif %}
-						</h2>
-					</div>
-					<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
-					<table>
-						<thead>
-							<tr>
-								<th>Numéro</th>
-								<th>Items</th>
-								<th>Nom</th>
-								<th>Prix</th>
-								<th>Date de création</th>
-								<th>Edition</th>
-								<th>Suppression</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for item in items %}
-								<tr>
-									<td>{{ item.id }}</td>
-									<td><img src="{{ asset('images/items/' ~ item.image) }}" alt="Item Image" class="item-image"></td>
-									<td>{{ item.name }}</td>
-									<td>
-										<div class="item-price-container">
-											<span class="item-price">{{ item.price }}</span>
-											<img src="{{ asset('images/gold.png') }}" alt="{{ item.name }}" class="gold-image">
-										</div>
-									</td>
-									<td>{{ item.createdAt|date('d/m/Y') }}</td>
-									<td>
-										<a href="{{ path('item.edit', { id : item.id }) }}" class="editBtn">Modifier</a>
-									</td>
-									<td>
-										<a href="{{ path('item.delete', { id : item.id }) }}" class="deleteBtn" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				{% else %}
-					<div class="lengthBuild">
-						<h2 class="lengthBuild">Aucun item</h2>
-					</div>
-					<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
-				{% endif %}
-			</section>
-			<!-- Fenêtre modale -->
-			<div id="myModal" class="modal">
-				<div class="modal-content">
-					<p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
-					<button id="modal-confirm">Confirmer</button>
-					<button id="modal-cancel">Annuler</button>
+{% extends 'base.html.twig' %}
+
+{% block meta_description %}Bienvenue sur la liste de vos d'items pour améliorer vos performances dans le jeu League of Legends.
+{% endblock %}
+
+{% block title %}Csp_Book - Mes items
+{% endblock %}
+
+{% block body %}
+	<main class="table">
+		<section class="tableHeader">
+			<h1 class="tableTitle">Mes items</h1>
+			{% for flashMessage in app.session.flashbag.get('success') %}
+				<div class="flash-success">
+					{{ flashMessage }}
 				</div>
+			{% endfor %}
+		</section>
+		<section class="tableBody">
+			<div class="lengthBuild">
+				{% if not items.items is empty %}
+					<h2>
+						{% if items.getTotalItemCount > 1 %}
+							Il y a
+							{{ items.getTotalItemCount }}
+							items
+						{% else %}
+							Il y a
+							{{ items.getTotalItemCount }}
+							item
+						{% endif %}
+					</h2>
+				</div>
+				<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Numéro</th>
+							<th>Items</th>
+							<th>Nom</th>
+							<th>Prix</th>
+							<th>Date de création</th>
+							<th>Edition</th>
+							<th>Suppression</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in items %}
+							<tr>
+								<td>{{ item.id }}</td>
+								<td><img src="{{ asset('images/items/' ~ item.image) }}" alt="Item Image" class="item-image"></td>
+								<td>{{ item.name }}</td>
+								<td>
+									<div class="item-price-container">
+										<span class="item-price">{{ item.price }}</span>
+										<img src="{{ asset('images/gold.png') }}" alt="{{ item.name }}" class="gold-image">
+									</div>
+								</td>
+								<td>{{ item.createdAt|date('d/m/Y') }}</td>
+								<td>
+									<a href="{{ path('item.edit', { id : item.id }) }}" class="editBtn">Modifier</a>
+								</td>
+								<td>
+									<a href="{{ path('item.delete', { id : item.id }) }}" class="deleteBtn" data-url="{{ path('item.delete', {id: item.id}) }}">Supprimer</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				<div class="lengthBuild">
+					<h2 class="lengthBuild">Aucun item</h2>
+				</div>
+				<a href="{{ path('item.new') }}" class="createBtn">Créer un item</a>
+			{% endif %}
+		</section>
+		<!-- Fenêtre modale -->
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+				<button id="modal-confirm">Confirmer</button>
+				<button id="modal-cancel">Annuler</button>
 			</div>
-		</main>
-	{% endblock %}
-</html>
+		</div>
+	</main>
+{% endblock %}

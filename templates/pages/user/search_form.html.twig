@@ -1,27 +1,21 @@
-<!Doctype html>
-<html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="descripiton" content="{% block meta_description %}Recherchez des utilisateurs simplement grace a cette interface !{% endblock %}">
-		<title>
-			{% block title %}Csp_Book - Recherche utilisateur
-			{% endblock %}
-		</title>
-	</head>
-	{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-	{% block body %}
-		<main class="content">
-			<div class="wrapper">
-				<h1>Rechercher un utilisateur</h1>
+{% block meta_description %}Recherchez des utilisateurs simplement grace a cette interface !
+{% endblock %}
 
-				<form action="{{ path('search_users') }}" method="GET">
-					<input type="text" name="user" id="search-user" class="searchBtn" placeholder="Rechercher un utilisateur">
-				</form>
+{% block title %}Csp_Book - Recherche utilisateur
+{% endblock %}
 
-				<div id="search-results"></div>
-			</div>
-		</main>
-	{% endblock %}
-</html>
+{% block body %}
+	<main class="content">
+		<div class="wrapper">
+			<h1>Rechercher un utilisateur</h1>
+
+			<form action="{{ path('search_users') }}" method="GET">
+				<input type="text" name="user" id="search-user" class="searchBtn" placeholder="Rechercher un utilisateur">
+			</form>
+
+			<div id="search-results"></div>
+		</div>
+	</main>
+{% endblock %}

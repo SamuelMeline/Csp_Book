@@ -1,103 +1,97 @@
-<!Doctype html>
-<html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name='description' content="{% block meta_description %}Bienvenue sur la liste de vos panoplies pour améliorer vos performances dans le jeu League of Legends. {% endblock %}">
-		<title>
-			{% block title %}Csp_Book - Mes panoplies
-			{% endblock %}
-		</title>
-	</head>
-	{% extends 'base.html.twig' %}
-	{% block body %}
-		<main class="table">
-			<section class="tableHeader">
-				<h1 class="tableTitle">Mes panoplies</h1>
-				{% for flashMessage in app.session.flashbag.get('success') %}
-					<div class="flash-success">
-						{{ flashMessage }}
-					</div>
-				{% endfor %}
-			</section>
-			<section class="tableBody">
-				<div class="lengthBuild">
-					{% if not builds.items is empty %}
-						<h2>
-							{% if builds.getTotalItemCount > 1 %}
-								Il y a
-								{{ builds.getTotalItemCount }}
-								panoplies
-							{% else %}
-								Il y a
-								{{ builds.getTotalItemCount }}
-								panoplie
-							{% endif %}
-						</h2>
-					</div>
-					<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
-					<table>
-						<thead>
-							<tr>
-								<th>Numéro</th>
-								<th>Nom</th>
-								<th>Items</th>
-								<th>Prix</th>
-								<th>Date de création</th>
-								<th>Edition</th>
-								<th>Suppression</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for build in builds %}
-								<tr>
-									<td>{{ build.id }}</td>
-									<td>{{ build.name }}</td>
-									<td
-										class="minLong">
-										{# Récupérer l'image de l'item ajouté #}
-										{% for item in build.items %}
-											{% if item.image is not null %}
-												<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
-											{% endif %}
-										{% endfor %}
-									</td>
-									<td>
-										{% if build.price is null %}
-											Non renseigné
-										{% else %}
-											<div class="build-price-container">
-												<span class="build-price">{{ build.price }}</span>
-												<img src="{{ asset('images/gold.png') }}" alt="{{ build.name }}" class="gold-image">
-											</div>
-										{% endif %}
-									</td>
-									<td>{{ build.createdAt|date('d/m/Y') }}</td>
-									<td>
-										<a href="{{ path('build.edit', { id : build.id }) }}" class="editBtn">Modifier</a>
-									</td>
-									<td>
-										<a href="{{ path('build.delete', { id : build.id }) }}" class="deleteBtn" data-url="{{ path('build.delete', {id: build.id}) }}">Supprimer</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				{% else %}
-					<div class="lengthBuild">
-						<h2>Aucune panoplie</h2>
-					</div>
-					<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
-				{% endif %}
-			</section>
-			<!-- Fenêtre modale -->
-			<div id="myModal" class="modal">
-				<div class="modal-content">
-					<p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
-					<button id="modal-confirm">Confirmer</button>
-					<button id="modal-cancel">Annuler</button>
+{% extends 'base.html.twig' %}
+
+{% block meta_description %}Bienvenue sur la liste de vos panoplies pour améliorer vos performances dans le jeu League of Legends.
+{% endblock %}
+
+{% block title %}Csp_Book - Mes panoplies
+{% endblock %}
+
+{% block body %}
+	<main class="table">
+		<section class="tableHeader">
+			<h1 class="tableTitle">Mes panoplies</h1>
+			{% for flashMessage in app.session.flashbag.get('success') %}
+				<div class="flash-success">
+					{{ flashMessage }}
 				</div>
+			{% endfor %}
+		</section>
+		<section class="tableBody">
+			<div class="lengthBuild">
+				{% if not builds.items is empty %}
+					<h2>
+						{% if builds.getTotalItemCount > 1 %}
+							Il y a
+							{{ builds.getTotalItemCount }}
+							panoplies
+						{% else %}
+							Il y a
+							{{ builds.getTotalItemCount }}
+							panoplie
+						{% endif %}
+					</h2>
+				</div>
+				<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Numéro</th>
+							<th>Nom</th>
+							<th>Items</th>
+							<th>Prix</th>
+							<th>Date de création</th>
+							<th>Edition</th>
+							<th>Suppression</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for build in builds %}
+							<tr>
+								<td>{{ build.id }}</td>
+								<td>{{ build.name }}</td>
+								<td class="minLong">
+									{# Récupérer l'image de l'item ajouté #}
+									{% for item in build.items %}
+										{% if item.image is not null %}
+											<img src="{{ asset('images/items/' ~ item.image) }}" alt="{{ item.name }}" class="item-image">
+										{% endif %}
+									{% endfor %}
+								</td>
+								<td>
+									{% if build.price is null %}
+										Non renseigné
+									{% else %}
+										<div class="build-price-container">
+											<span class="build-price">{{ build.price }}</span>
+											<img src="{{ asset('images/gold.png') }}" alt="{{ build.name }}" class="gold-image">
+										</div>
+									{% endif %}
+								</td>
+								<td>{{ build.createdAt|date('d/m/Y') }}</td>
+								<td>
+									<a href="{{ path('build.edit', { id : build.id }) }}" class="editBtn">Modifier</a>
+								</td>
+								<td>
+									<a href="{{ path('build.delete', { id : build.id }) }}" class="deleteBtn" data-url="{{ path('build.delete', {id: build.id}) }}">Supprimer</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				<div class="lengthBuild">
+					<h2>Aucune panoplie</h2>
+				</div>
+				<a href="{{ path('build.new') }}" class="createBtn">Créer une panoplie</a>
+			{% endif %}
+		</section>
+		<!-- Fenêtre modale -->
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+				<button id="modal-confirm">Confirmer</button>
+				<button id="modal-cancel">Annuler</button>
 			</div>
-		</main>
-	{% endblock %}
-</html>
+		</div>
+	</main>
+{% endblock %}
