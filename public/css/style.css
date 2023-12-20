@@ -85,6 +85,10 @@ nav ul li a {
 	font-size: 12px;
 }
 
+/* a.dnmobile {
+    display: none;
+} */
+
 nav ul li a:hover {
 	color: #ad1717;
 	font-weight: 600;
