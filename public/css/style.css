@@ -82,12 +82,8 @@ nav ul li {
 nav ul li a {
 	text-decoration: none !important;
 	color: #ffd700;
-	font-size: 12px;
+	font-size: 14px;
 }
-
-/* a.dnmobile {
-    display: none;
-} */
 
 nav ul li a:hover {
 	color: #ad1717;
@@ -117,7 +113,7 @@ nav .menu-icon {
 }
 
 .custom-dropdown-menu {
-	margin-top: 15px ;
+	margin-top: 15px;
 }
 
 .dropdown-menu {
@@ -887,6 +883,10 @@ footer {
 	margin: 0px 5px;
 }
 
+a.dnmobile {
+	display: none;
+}
+
 /* Responsive */
 
 @media screen and (min-width: 525px) {
@@ -989,6 +989,10 @@ footer {
 	}
 
 	/* Header */
+
+	a.dnmobile {
+		display: block;
+	}
 
 	nav {
 		display: inline-block;
