@@ -981,6 +981,12 @@ a.dnmobile {
 	}
 }
 
+@media screen and (min-width: 575px) {
+	nav ul li a {
+		font-size: 16px;
+	}
+}
+
 @media screen and (min-width: 760px) {
 	/* Body */
 
