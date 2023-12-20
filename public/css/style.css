@@ -82,7 +82,7 @@ nav ul li {
 nav ul li a {
 	text-decoration: none !important;
 	color: #ffd700;
-	font-size: 12px;
+	font-size: 9px;
 }
 
 nav ul li a:hover {
@@ -108,7 +108,7 @@ nav .menu-icon {
 
 .dropdown {
 	position: absolute;
-	top: 7%;
+	top: 10%;
 	right: 5%;
 }
 
@@ -888,11 +888,13 @@ a.dnmobile {
 }
 
 /* Responsive */
+@media screen and (min-width: 370px){
+	nav ul li a {
+		font-size: 12px;
+	}
+}
 
 @media screen and (min-width: 460px) {
-	.dropdown {
-		top: 6%;
-	}
 	nav ul li a {
 		font-size: 14px;
 	}
